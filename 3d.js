@@ -21,24 +21,26 @@ const camera = new THREE.PerspectiveCamera(
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(w, h);
 container.appendChild( renderer.domElement );
+camera.position.z = 15;
 
-var controls = new OrbitControls(camera, renderer.domElement);
-camera.position.z = 15;	
+
+var controls = new OrbitControls(camera, renderer.domElement);	
 controls.update();
 
-var light = new THREE.AmbientLight( 0xFFFFFF );
+
+var light = new THREE.AmbientLight( 0xDDDDDD );
 scene.add(light)
 
 
 //---CARGAR TEXTURAS PBR---
 const textureLoader = new THREE.TextureLoader();
 	//cargar los mapas como inputs en el PBR
-	const diffuse = textureLoader.load("./models/robot2.png");
+	const diffuse = textureLoader.load("./models/robot1.png");
 	const roughness = textureLoader.load("./models/robot3.png");
 
 //---CARGAR ESCENA---
 var robot;
-var loaded = false;
+var robotLoaded = false;
 new GLTFLoader()
    .load("./models/robot-smooth.glb",
    function ( gltf ) {
@@ -52,7 +54,25 @@ new GLTFLoader()
       gltf.body.material.roughness = .75;
       robot = gltf.body
       scene.add( robot )
-      loaded = true;
+      robotLoaded = true;
+   });
+   
+
+
+var plane
+var planeLoaded = false;
+new GLTFLoader()
+   .load("./models/plane.glb",
+   function ( gltf ) {
+      plane = gltf.scene.children[0]
+      scene.add(plane)
+      planeLoaded = true;
+   });
+
+new GLTFLoader()
+   .load("./models/scene.glb",
+   function ( gltf ) {
+      scene.add(gltf.scene)
    });
 
 //---CARGA DE ILUMINACION AMBIENTAL---
@@ -70,22 +90,27 @@ new EXRLoader()
 
 
 //---TRACKMOUSE---
-var x = w/2;
-var y = h/2;
+var x = 0;
+var y = 0;
 container.addEventListener("mousemove", function(e){
    x = (e.clientX - (w/2)) / w;
    y = (e.clientY - (h/2)) / h;
-   console.log(x, y)
 })
 
 //---RENDERIZAR---
 function animate(){
-   if(loaded){
+   if(robotLoaded){
       robot.rotation.y = x - 1.57;
       robot.rotation.x = y;
    }
+   if(planeLoaded){
+      if(plane.position.z >= -17){
+         plane.position.z -= 0.05  
+      }else{
+         plane.position.z = 0
+      }  
+   }
    requestAnimationFrame(animate);
-   //controls.update();
 	renderer.render(scene, camera);
 }
 animate();
