@@ -22,23 +22,13 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(w, h);
 container.appendChild( renderer.domElement );
 camera.position.z = 15;
-
-
-var controls = new OrbitControls(camera, renderer.domElement);	
-controls.update();
-
-
+//light
 var light = new THREE.AmbientLight( 0xDDDDDD );
 scene.add(light)
 
 
-//---CARGAR TEXTURAS PBR---
-const textureLoader = new THREE.TextureLoader();
-	//cargar los mapas como inputs en el PBR
-	const diffuse = textureLoader.load("./models/robot1.png");
-	const roughness = textureLoader.load("./models/robot3.png");
-
-//---CARGAR ESCENA---
+//---LOAD GLTF MODELS---
+//robot
 var robot;
 var robotLoaded = false;
 new GLTFLoader()
@@ -56,9 +46,8 @@ new GLTFLoader()
       scene.add( robot )
       robotLoaded = true;
    });
-   
 
-
+//plane
 var plane
 var planeLoaded = false;
 new GLTFLoader()
@@ -69,13 +58,15 @@ new GLTFLoader()
       planeLoaded = true;
    });
 
+//background
 new GLTFLoader()
    .load("./models/scene.glb",
    function ( gltf ) {
       scene.add(gltf.scene)
    });
 
-//---CARGA DE ILUMINACION AMBIENTAL---
+
+//---LOAD AMBIENT ILUMINATION---
 const pmremGenerator = new THREE.PMREMGenerator( renderer );
 pmremGenerator.compileEquirectangularShader();
 new EXRLoader()
@@ -89,20 +80,23 @@ new EXRLoader()
 	   });
 
 
-//---TRACKMOUSE---
-var x = 0;
-var y = 0;
+//---TRACK MOUSE POSTION FROM CENTER---
+var mouseX = 0;
+var mouseY = 0;
 container.addEventListener("mousemove", function(e){
-   x = (e.clientX - (w/2)) / w;
-   y = (e.clientY - (h/2)) / h;
+   mouseX = (e.clientX - (w/2)) / w;
+   mouseY = (e.clientY - (h/2)) / h;
 })
 
-//---RENDERIZAR---
+
+//---FINAL---
 function animate(){
+   //make robot follow pointer
    if(robotLoaded){
-      robot.rotation.y = x - 1.57;
-      robot.rotation.x = y;
+      robot.rotation.y = mouseX - 1.57;
+      robot.rotation.x = mouseY;
    }
+   //animate plane grid
    if(planeLoaded){
       if(plane.position.z >= -17){
          plane.position.z -= 0.05  
