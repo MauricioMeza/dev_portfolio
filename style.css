@@ -1,0 +1,17 @@
+body{
+	margin: 0;
+}
+canvas{
+	width: 100%;
+	height: auto;
+}
+input{
+	width: 75%;
+	height: 1.5%;
+}
+#canvas3d{
+	padding: 0px;
+}
+#controls{
+	background-color: #cccccc;
+}
