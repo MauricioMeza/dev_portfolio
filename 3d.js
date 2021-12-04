@@ -4,12 +4,14 @@ import { OrbitControls } from 'https://cdn.skypack.dev/three/examples/jsm/contro
 import { EXRLoader } from "https://threejs.org/examples/jsm/loaders/EXRLoader.js";
 
 var container = document.getElementById("3d")
+var w = window.innerWidth;
+var h = window.innerHeight;
 
 //---CAMERA---
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
 	40, //Field of View
-	(window.innerWidth)/ (window.innerHeight), //Aspect Ratio
+	(w)/ (h), //Aspect Ratio
 	0.1,  //Inner Frustum
 	1000 //Outter Frustum
 );
@@ -17,7 +19,7 @@ const camera = new THREE.PerspectiveCamera(
 
 //---RENDERER--
 const renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setSize(w, h);
 container.appendChild( renderer.domElement );
 
 var controls = new OrbitControls(camera, renderer.domElement);
@@ -66,13 +68,24 @@ new EXRLoader()
 			texture.dispose();
 	   });
 
+
+//---TRACKMOUSE---
+var x = w/2;
+var y = h/2;
+container.addEventListener("mousemove", function(e){
+   x = (e.clientX - (w/2)) / w;
+   y = (e.clientY - (h/2)) / h;
+   console.log(x, y)
+})
+
 //---RENDERIZAR---
 function animate(){
    if(loaded){
-      robot.rotation.y += .01;
+      robot.rotation.y = x - 1.57;
+      robot.rotation.x = y;
    }
    requestAnimationFrame(animate);
-   controls.update();
+   //controls.update();
 	renderer.render(scene, camera);
 }
 animate();
