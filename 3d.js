@@ -4,6 +4,7 @@ import { OrbitControls } from 'https://cdn.skypack.dev/three/examples/jsm/contro
 import { EXRLoader } from "https://cdn.skypack.dev/three/examples/jsm/loaders/EXRLoader.js";
 
 var container = document.getElementById("c3d")
+var track = document.getElementById("track")
 var w = window.innerWidth;
 var h = window.innerHeight;
 
@@ -204,7 +205,7 @@ externalLoads();
 var mouseX = 0;
 var mouseY = 0;
 var mouseNormal = new THREE.Vector2();
-container.addEventListener("mousemove", function(e){
+track.addEventListener("mousemove", function(e){
    e.preventDefault()
    mouseX = (e.clientX - (w/2)) / w;
    mouseY = (e.clientY - (h/2)) / h;
