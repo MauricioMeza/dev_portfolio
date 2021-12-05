@@ -15,13 +15,29 @@ canvas{
 	z-index: -9999;
 }
 #title{
-	width: 40%;
+	width: 80%;
 	text-align: center;
 	position: fixed;
-	top: 64%;
+	top: 63%;
 	left: 50%;
-	margin-left: -20%;
+	margin-left: -40%;
+	color: #3b4144;
 }
+
+#nome{
+	font-size: 5vh;
+}
+.sobre{
+	font-size: 4vh;
+}
+@media (max-width: 576px) {
+	#nome{
+		font-size: 7vw;
+	}
+	.sobre{
+		font-size: 5vw;
+	}
+  }
 
 /*---BOTONES DE SELECCION---*/
 
@@ -37,17 +53,19 @@ canvas{
 .boton{
 	width: 22%;
 	padding: 2vh 0 2vh 0;
-	background-color: #aa6570;
+	background-color: #aa6571a8;
 	color: #f0fdff;
-	border-width: 0;
+	border-width: 2px;
+	border-color: #f0fdff;
 	border-radius: 20px;
-	border-style: double;
+	border-style:solid;
 }
 .boton:hover{
 	cursor: pointer;
 	background-color: #f0fdff;
-	color: #434749;
-	border-width: 2px;
+	color: #3b4144;
+	border-width: px;
+	border-color: #3b4144;
 }
 
 /*-posicion-*/
@@ -70,8 +88,4 @@ canvas{
 	position: fixed;
 	top: 50vh;
 	right: 5vw;
-}
-
-h2, h3{
-	margin-bottom: 0 !important;
 }

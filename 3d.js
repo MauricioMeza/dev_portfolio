@@ -212,7 +212,8 @@ track.addEventListener("mousemove", function(e){
    mouseNormal.x = ( e.clientX / w ) * 2 - 1;
    mouseNormal.y = - ( e.clientY / h ) * 2 + 1;
 })
-//---get mouse  clicks---
+
+//---get mouse clicks---
 container.addEventListener("click", function(e){
    e.preventDefault()
    if (highlighted){
@@ -225,12 +226,21 @@ container.addEventListener("click", function(e){
    }
 })
 
+//---resize events---
+window.addEventListener("resize", function(e){
+   w = window.innerWidth;
+   h = window.innerHeight;
+   renderer.setSize(w, h);
+   camera.aspect = w/h;
+   camera.updateProjectionMatrix();
+})
+
 
 //---raycasting for selection---
 var ray = new THREE.Raycaster();
 var highlighted = false;
 
-//---highlightAction---
+//---highlight action---
 function highlightAction(obj, img, inverted, link){
    if(!highlighted){
       obj.material.map = img;
@@ -243,7 +253,7 @@ function highlightAction(obj, img, inverted, link){
       obj.rotation.y -= 0.025;  
    }
 }
-
+//---reset all highlighted actions---4
 function resethighlight(){
    if(highlighted){
       cubeLi.material.map = liImgC;
@@ -258,9 +268,6 @@ function resethighlight(){
       highlighted = false;
    }  
 }
-
-
-
 
 /*--------FINAL RUN --------*/
 function animate(){
