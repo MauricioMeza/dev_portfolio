@@ -1,7 +1,7 @@
-import * as THREE from "https://threejs.org/build/three.module.js";
+import * as THREE from "https://cdn.skypack.dev/three/build/three.module.js";
 import { GLTFLoader } from 'https://cdn.skypack.dev/three/examples/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from 'https://cdn.skypack.dev/three/examples/jsm/controls/OrbitControls.js';
-import { EXRLoader } from "https://threejs.org/examples/jsm/loaders/EXRLoader.js";
+import { EXRLoader } from "https://cdn.skypack.dev/three/examples/jsm/loaders/EXRLoader.js";
 
 var container = document.getElementById("3d")
 var w = window.innerWidth;
@@ -83,7 +83,6 @@ function loadHDRI(){
 
             var exrCubeRenderTarget = pmremGenerator.fromEquirectangular( texture );
             var exrBackground = exrCubeRenderTarget.texture;
-            console.log(exrBackground);
             exrBackground.flipY = false;
             exrBackground.rotation = 3.14;
             scene.background = exrBackground;
@@ -96,7 +95,6 @@ function loadHDRI(){
 var robot;
 var robotLoaded = false;
 var cube, cubeLi, cubeGh, cubeAs, cubeIg; 
-var cubesLoaded = false;
 var plane;
 var planeLoaded = false;
 function loadModels(){
@@ -151,8 +149,8 @@ function loadModels(){
          cubeLi.name = "cubeLi"
          cubeLi.material = cubeMat.clone()
          cubeLi.material.map = liImgC;
-         console.log(cubeLi.material)
          cubeLi.position.set(-2 - ((w-300)/800), y , z)
+         cubeLi.userData = {URL:"https://www.linkedin.com/in/mauromezab/"}
          scene.add(cubeLi)
          
          cubeGh = cube.clone();
@@ -160,6 +158,7 @@ function loadModels(){
          cubeGh.material = cubeMat.clone()
          cubeGh.material.map = ghImgC;
          cubeGh.position.set(-.65 - ((w-300)/2000), y , z)
+         cubeGh.userData = {URL:"https://github.com/MauricioMeza"}
          scene.add(cubeGh)
          
          cubeAs = cube.clone();
@@ -167,6 +166,7 @@ function loadModels(){
          cubeAs.material = cubeMat.clone()
          cubeAs.material.map = asImgC;
          cubeAs.position.set(.65 + ((w-300)/2000), y , z)
+         cubeAs.userData = {URL:"https://www.artstation.com/mmezab"}
          scene.add(cubeAs)
          
          cubeIg = cube.clone()
@@ -174,9 +174,8 @@ function loadModels(){
          cubeIg.material = cubeMat.clone()
          cubeIg.material.map = igImgC;
          cubeIg.position.set(2 + ((w-300)/800), y , z)
+         cubeIg.userData = {URL:"https://www.instagram.com/mauro_meza_3d/"}
          scene.add(cubeIg)
-         
-         cubesLoaded = true;
       });
    
    //
@@ -211,6 +210,18 @@ container.addEventListener("mousemove", function(e){
    mouseNormal.x = ( e.clientX / w ) * 2 - 1;
    mouseNormal.y = - ( e.clientY / h ) * 2 + 1;
 })
+//---get mouse  clicks---
+container.addEventListener("click", function(e){
+   if (highlighted){
+      ray.setFromCamera( mouseNormal, camera);
+      var intersect = ray.intersectObject(scene);
+      if (intersect.length > 0) {
+         var obj = intersect[0].object
+         window.open(obj.userData.URL) 
+      }
+   }
+})
+
 
 //---raycasting for selection---
 var ray = new THREE.Raycaster();
@@ -227,7 +238,7 @@ function highlightAction(obj, img, inverted, link){
       obj.rotation.y += 0.025;  
    }else{
       obj.rotation.y -= 0.025;  
-   } 
+   }
 }
 
 function resethighlight(){
@@ -276,21 +287,19 @@ function animate(){
             resethighlight();
             break;
          case "cubeLi":
-            highlightAction(obj, liImg, true)
+            highlightAction(obj, liImg, true, "https://www.linkedin.com/in/mauromezab/")
             break;
          case "cubeGh":
-            highlightAction(obj, ghImg, true)
+            highlightAction(obj, ghImg, true, "https://github.com/MauricioMeza")
             break;
          case "cubeAs":
-            highlightAction(obj, asImg, false)
+            highlightAction(obj, asImg, false, "https://www.artstation.com/mmezab")
             break;
          case "cubeIg":
-            highlightAction(obj, igImg, false)
+            highlightAction(obj, igImg, false, "https://www.instagram.com/mauro_meza_3d/")
             break;
-
       }
    }
-   //console.log(intersect);
 
    requestAnimationFrame(animate);
 	renderer.render(scene, camera);
