@@ -148,7 +148,7 @@ function loadModels(){
             })
             cube.material = cubeMat;
             cube.scale.set(size, size, size);
-            const z = cube.position.z = 1;
+            const z =  1;
             const y = -4;
 
                //attributes for each cube
@@ -249,17 +249,38 @@ var ray = new THREE.Raycaster();
 var highlighted = false;
 
 //---highlight action---
+var rotateleft, rotateright;
+rotateleft = true;
 function highlightAction(obj, img, inverted, link){
    if(!highlighted){
       obj.material.map = img;
       highlighted = true;
       document.body.style.cursor = "pointer";
+      obj.position.z = 1.5;
    }
+   
+   if(obj.rotation.z >= .15){
+      rotateleft = false;
+      rotateright = true;
+   }
+   if(obj.rotation.z <= -.15){
+      rotateleft = true;
+      rotateright = false;
+   }
+    
+   if(rotateleft){
+      obj.rotation.z += 0.05;
+   }
+   if(rotateright){
+      obj.rotation.z -= 0.05;
+   }
+      
+   /*
    if(inverted){
       obj.rotation.y += 0.025;  
    }else{
       obj.rotation.y -= 0.025;  
-   }
+   }*/
 }
 //---reset all highlighted actions---4
 function resethighlight(){
@@ -268,10 +289,14 @@ function resethighlight(){
       cubeGh.material.map = ghImgC;
       cubeAs.material.map = asImgC;
       cubeIg.material.map = igImgC;
-      cubeLi.rotation.y = 0;
-      cubeGh.rotation.y = 0;
-      cubeAs.rotation.y = 0;
-      cubeIg.rotation.y = 0;
+      cubeLi.rotation.z = 0;
+      cubeGh.rotation.z = 0;
+      cubeAs.rotation.z = 0;
+      cubeIg.rotation.z = 0;
+      cubeLi.position.z = 1;
+      cubeGh.position.z = 1;
+      cubeAs.position.z = 1;
+      cubeIg.position.z = 1;
       document.body.style.cursor = "default";
       highlighted = false;
    }  
