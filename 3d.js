@@ -43,13 +43,22 @@ async function externalLoads(){
 }
 
 //----LOAD TEXTURES----
-var liImgC, ghImgC, asImgC, igImgC;
+var liImgC, ghImgC, asImgC, igImgC, metalRoughness, robotC, robotR;
 function loadTextures(){
    const textureLoader = new THREE.TextureLoader();
+   robotC = textureLoader.load("./models/robot2.png");
+   robotC.flipY = false;
+   robotR = textureLoader.load("./models/robot3.png");
+   robotR.flipY = false;
    liImgC = textureLoader.load("./models/linkedinc.jpg");
+   liImgC.flipY = false;
 	ghImgC = textureLoader.load("./models/githubc.jpg");
+   ghImgC.flipY = false;
    asImgC = textureLoader.load("./models/artstationc.jpg");
+   asImgC.flipY = false;
 	igImgC = textureLoader.load("./models/intagramc.jpg");
+   igImgC.flipY = false;
+   metalRoughness = textureLoader.load("./models/roughnessMetal.jpg");
 }
 
 
@@ -63,6 +72,9 @@ function loadHDRI(){
 
             var exrCubeRenderTarget = pmremGenerator.fromEquirectangular( texture );
             var exrBackground = exrCubeRenderTarget.texture;
+            console.log(exrBackground);
+            exrBackground.flipY = false;
+            exrBackground.rotation = 3.14;
             scene.background = exrBackground;
             texture.dispose();
 	   });
@@ -80,7 +92,7 @@ function loadModels(){
 
    //robot
    new GLTFLoader()
-      .load("./models/robot-smooth.glb",
+      .load("./models/robot-notext.glb",
       function ( gltf ) {
          var scale = 1;
          gltf.body = gltf.scene.children[0];
@@ -88,9 +100,18 @@ function loadModels(){
          gltf.body.rotation.set ( 0, -1.57, 0 );
          gltf.body.scale.set(scale,scale,scale);
          gltf.body.position.set ( 0, 0, 0 );
-         gltf.body.material.envMap = scene.background;
-         gltf.body.material.roughness = .75;
+         var robotMat = new THREE.MeshStandardMaterial({
+            color: "#FFFFFF",
+            map: robotC,
+            metalness: 0.5,
+            roughness: 0.75,
+            roughnessMap: robotR,
+            envMap: scene.background,
+         })
+         //gltf.body.material.envMap = scene.background;
+         //gltf.body.material.roughness = .75;
          robot = gltf.body
+         robot.material = robotMat
          scene.add( robot )
          robotLoaded = true;
       });
@@ -104,20 +125,21 @@ function loadModels(){
          cube = gltf.scene.children[0];
          var cubeMat = new THREE.MeshStandardMaterial({
             color: "#FFFFFF",
-            metalness: 0.75,
-            roughness: 0.75,
+            metalness: 0.6,
+            roughness: 0.6,
+            //roughnessMap: metalRoughness,
             envMap: scene.background,
          })
          cube.material = cubeMat;
          cube.scale.set(size, size, size);
-         console.log(cube.rotation) 
          const z = cube.position.z;
-         const y = -4;
+         const y = -4.2;
 
          //attributes for each cube
          cubeLi = cube.clone();
          cubeLi.material = cubeMat.clone()
          cubeLi.material.map = liImgC;
+         console.log(cubeLi.material)
          cubeLi.position.set(-2 - ((w-300)/800), y , z)
          scene.add(cubeLi)
          
