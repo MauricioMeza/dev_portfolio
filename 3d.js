@@ -49,46 +49,52 @@ async function externalLoads(){
 var liImgC, liImg, ghImgC, ghImg, asImgC, asImg, igImgC, igImg, metalRoughness, 
    robotC, robotR;
 function loadTextures(){
-   const textureLoader = new THREE.TextureLoader();
-   robotC = textureLoader.load("./models/robot2.png");
-   robotC.flipY = false;
-   robotR = textureLoader.load("./models/robot3.png");
-   robotR.flipY = false;
-   liImgC = textureLoader.load("./models/linkedinc.jpg");
-   liImgC.flipY = false;
-   liImg = textureLoader.load("./models/linkedin.jpg");
-   liImg.flipY = false;
-	ghImgC = textureLoader.load("./models/githubc.jpg");
-   ghImgC.flipY = false;
-   ghImg = textureLoader.load("./models/github.jpg");
-   ghImg.flipY = false;
-   asImgC = textureLoader.load("./models/artstationc.jpg");
-   asImgC.flipY = false;
-   asImg = textureLoader.load("./models/artstation.jpg");
-   asImg.flipY = false;
-	igImgC = textureLoader.load("./models/intagramc.jpg");
-   igImgC.flipY = false;
-   igImg = textureLoader.load("./models/instagram.jpg");
-   igImg.flipY = false;
-   metalRoughness = textureLoader.load("./models/roughnessMetal.jpg");
+   return new Promise(resolve => {
+      const textureLoader = new THREE.TextureLoader();
+      robotC = textureLoader.load("./models/robot2.png");
+      robotC.flipY = false;
+      robotR = textureLoader.load("./models/robot3.png");
+      robotR.flipY = false;
+      liImgC = textureLoader.load("./models/linkedinc.jpg");
+      liImgC.flipY = false;
+      liImg = textureLoader.load("./models/linkedin.jpg");
+      liImg.flipY = false;
+      ghImgC = textureLoader.load("./models/githubc.jpg");
+      ghImgC.flipY = false;
+      ghImg = textureLoader.load("./models/github.jpg");
+      ghImg.flipY = false;
+      asImgC = textureLoader.load("./models/artstationc.jpg");
+      asImgC.flipY = false;
+      asImg = textureLoader.load("./models/artstation.jpg");
+      asImg.flipY = false;
+      igImgC = textureLoader.load("./models/intagramc.jpg");
+      igImgC.flipY = false;
+      igImg = textureLoader.load("./models/instagram.jpg");
+      igImg.flipY = false;
+      metalRoughness = textureLoader.load("./models/roughnessMetal.jpg");
+      resolve('ok');
+    });
 }
 
 
 //---LOAD AMBIENT ILUMINATION---
 function loadHDRI(){
-   const pmremGenerator = new THREE.PMREMGenerator( renderer );
-   pmremGenerator.compileEquirectangularShader();
-   new EXRLoader()
-         .setDataType( THREE.UnsignedByteType )
-         .load( "./models/studio.exr", function ( texture ) {
+   return new Promise(resolve => {
+      const pmremGenerator = new THREE.PMREMGenerator( renderer );
+      pmremGenerator.compileEquirectangularShader();
+      new EXRLoader()
+            .setDataType( THREE.UnsignedByteType )
+            .load( "./models/studio.exr", function ( texture ) {
 
-            var exrCubeRenderTarget = pmremGenerator.fromEquirectangular( texture );
-            var exrBackground = exrCubeRenderTarget.texture;
-            exrBackground.flipY = false;
-            exrBackground.rotation = 3.14;
-            scene.background = exrBackground;
-            texture.dispose();
-	   });
+               var exrCubeRenderTarget = pmremGenerator.fromEquirectangular( texture );
+               var exrBackground = exrCubeRenderTarget.texture;
+               exrBackground.flipY = false;
+               exrBackground.rotation = 3.14;
+               scene.background = exrBackground;
+               texture.dispose();
+               resolve('ok');
+         });
+    });
 }
 
 
