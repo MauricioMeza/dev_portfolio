@@ -13,7 +13,7 @@ var h = window.innerHeight;
 //---CAMERA---
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
-	40, //Field of View
+	30, //Field of View
 	(w)/ (h), //Aspect Ratio
 	0.1,  //Inner Frustum
 	1000 //Outter Frustum
@@ -24,10 +24,12 @@ const camera = new THREE.PerspectiveCamera(
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(w, h);
 container.appendChild( renderer.domElement );
-camera.position.z = 15;
+camera.position.z = 20;
 
+/*
 var controls = new OrbitControls(camera, renderer.domElement);	
 controls.update();
+*/
 
 var light = new THREE.AmbientLight( 0xDDDDDD );
 scene.add(light)
@@ -37,13 +39,14 @@ scene.add(light)
 /*--------ASYNCRONOUS EXTERNAL LOADING --------*/
 
 async function externalLoads(){
-   await loadTextures();
    await loadHDRI();
+   await loadTextures();
    await loadModels();
 }
 
 //----LOAD TEXTURES----
-var liImgC, ghImgC, asImgC, igImgC, metalRoughness, robotC, robotR;
+var liImgC, liImg, ghImgC, ghImg, asImgC, asImg, igImgC, igImg, metalRoughness, 
+   robotC, robotR;
 function loadTextures(){
    const textureLoader = new THREE.TextureLoader();
    robotC = textureLoader.load("./models/robot2.png");
@@ -52,12 +55,20 @@ function loadTextures(){
    robotR.flipY = false;
    liImgC = textureLoader.load("./models/linkedinc.jpg");
    liImgC.flipY = false;
+   liImg = textureLoader.load("./models/linkedin.jpg");
+   liImg.flipY = false;
 	ghImgC = textureLoader.load("./models/githubc.jpg");
    ghImgC.flipY = false;
+   ghImg = textureLoader.load("./models/github.jpg");
+   ghImg.flipY = false;
    asImgC = textureLoader.load("./models/artstationc.jpg");
    asImgC.flipY = false;
+   asImg = textureLoader.load("./models/artstation.jpg");
+   asImg.flipY = false;
 	igImgC = textureLoader.load("./models/intagramc.jpg");
    igImgC.flipY = false;
+   igImg = textureLoader.load("./models/instagram.jpg");
+   igImg.flipY = false;
    metalRoughness = textureLoader.load("./models/roughnessMetal.jpg");
 }
 
@@ -132,11 +143,12 @@ function loadModels(){
          })
          cube.material = cubeMat;
          cube.scale.set(size, size, size);
-         const z = cube.position.z;
-         const y = -4.2;
+         const z = cube.position.z = 1;
+         const y = -4;
 
          //attributes for each cube
          cubeLi = cube.clone();
+         cubeLi.name = "cubeLi"
          cubeLi.material = cubeMat.clone()
          cubeLi.material.map = liImgC;
          console.log(cubeLi.material)
@@ -144,18 +156,21 @@ function loadModels(){
          scene.add(cubeLi)
          
          cubeGh = cube.clone();
+         cubeGh.name = "cubeGh"
          cubeGh.material = cubeMat.clone()
          cubeGh.material.map = ghImgC;
          cubeGh.position.set(-.65 - ((w-300)/2000), y , z)
          scene.add(cubeGh)
          
          cubeAs = cube.clone();
+         cubeAs.name = "cubeAs"
          cubeAs.material = cubeMat.clone()
          cubeAs.material.map = asImgC;
          cubeAs.position.set(.65 + ((w-300)/2000), y , z)
          scene.add(cubeAs)
          
          cubeIg = cube.clone()
+         cubeIg.name = "cubeIg"
          cubeIg.material = cubeMat.clone()
          cubeIg.material.map = igImgC;
          cubeIg.position.set(2 + ((w-300)/800), y , z)
@@ -163,16 +178,18 @@ function loadModels(){
          
          cubesLoaded = true;
       });
-
-   //plane
+   
+   //
+   
    new GLTFLoader()
       .load("./models/plane.glb",
       function ( gltf ) {
          plane = gltf.scene.children[0]
+         plane.position.y += 2.5;
          scene.add(plane)
          planeLoaded = true;
       });
-
+     
    //background
    new GLTFLoader()
       .load("./models/scene.glb",
@@ -184,13 +201,49 @@ externalLoads();
 
 /*-------- EVENTS AND INTERACTIONS --------*/
 
-//-----track mouse from center
+//---track mouse from center and normalized---
 var mouseX = 0;
 var mouseY = 0;
+var mouseNormal = new THREE.Vector2();
 container.addEventListener("mousemove", function(e){
    mouseX = (e.clientX - (w/2)) / w;
    mouseY = (e.clientY - (h/2)) / h;
+   mouseNormal.x = ( e.clientX / w ) * 2 - 1;
+   mouseNormal.y = - ( e.clientY / h ) * 2 + 1;
 })
+
+//---raycasting for selection---
+var ray = new THREE.Raycaster();
+var highlighted = false;
+
+//---highlightAction---
+function highlightAction(obj, img, inverted, link){
+   if(!highlighted){
+      obj.material.map = img;
+      highlighted = true;
+      document.body.style.cursor = "pointer";
+   }
+   if(inverted){
+      obj.rotation.y += 0.025;  
+   }else{
+      obj.rotation.y -= 0.025;  
+   } 
+}
+
+function resethighlight(){
+   if(highlighted){
+      cubeLi.material.map = liImgC;
+      cubeGh.material.map = ghImgC;
+      cubeAs.material.map = asImgC;
+      cubeIg.material.map = igImgC;
+      cubeLi.rotation.y = 0;
+      cubeGh.rotation.y = 0;
+      cubeAs.rotation.y = 0;
+      cubeIg.rotation.y = 0;
+      document.body.style.cursor = "default";
+      highlighted = false;
+   }  
+}
 
 
 
@@ -210,6 +263,35 @@ function animate(){
          plane.position.z = 0
       }  
    }
+   //raycaster
+   ray.setFromCamera( mouseNormal, camera);
+   var intersect = ray.intersectObject(scene);
+   if (intersect.length > 0) {
+      var obj = intersect[0].object
+      switch(obj.name){
+         case "Plane":
+            resethighlight()
+            break;
+         case "Plane006":
+            resethighlight();
+            break;
+         case "cubeLi":
+            highlightAction(obj, liImg, true)
+            break;
+         case "cubeGh":
+            highlightAction(obj, ghImg, true)
+            break;
+         case "cubeAs":
+            highlightAction(obj, asImg, false)
+            break;
+         case "cubeIg":
+            highlightAction(obj, igImg, false)
+            break;
+
+      }
+   }
+   //console.log(intersect);
+
    requestAnimationFrame(animate);
 	renderer.render(scene, camera);
 }
