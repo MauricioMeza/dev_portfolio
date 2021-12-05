@@ -53,12 +53,13 @@ canvas{
 .boton{
 	width: 22%;
 	padding: 2vh 0 2vh 0;
-	background-color: #aa6571a8;
+	background-color: #dc4a3ac5;
 	color: #f0fdff;
 	border-width: 2px;
 	border-color: #f0fdff;
 	border-radius: 20px;
 	border-style:solid;
+	transition: 0.3s;
 }
 @media (max-width: 768px) {
 	.boton{
@@ -73,6 +74,7 @@ canvas{
 	}
   }
 .boton:hover{
+	width: 23%;
 	cursor: pointer;
 	background-color: #f0fdff;
 	color: #3b4144;
