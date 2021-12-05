@@ -1,17 +1,71 @@
 body{
 	margin: 0;
+	font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 canvas{
 	width: 100%;
 	height: auto;
-}
-input{
-	width: 75%;
-	height: 1.5%;
-}
-#canvas3d{
 	padding: 0px;
+	width: 100vw;
+	height: 100vh;
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: -9999;
 }
-#controls{
-	background-color: #cccccc;
+#title{
+	text-align: center;
+	position: fixed;
+	top: 62vh;
+	left: 35vw;
+}
+
+/*---BOTONES DE SELECCION---*/
+
+/*-tamaño de letra-*/
+.n{
+	font-size: 2.5vw;
+}
+.m{
+	font-size: 3vw;
+}
+
+/*-estilo-*/
+.boton{
+	width: 22%;
+	padding: 2vh 0 2vh 0;
+	background-color: #aa6570;
+	color: #f0fdff;
+	border-width: 0;
+	border-radius: 20px;
+	border-style: double;
+}
+.boton:hover{
+	cursor: pointer;
+	background-color: #f0fdff;
+	color: #434749;
+	border-width: 2px;
+}
+
+/*-posicion-*/
+#b1{
+	position: fixed;
+	top: 15vh;
+	left: 10vw;
+}
+#b2{
+	position: fixed;
+	top: 15vh;
+	right: 10vw;
+}
+#b3{
+	position: fixed;
+	top: 50vh;
+	left: 5vw;
+}
+#b4{
+	position: fixed;
+	top: 50vh;
+	right: 5vw;
 }

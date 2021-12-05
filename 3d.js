@@ -3,7 +3,7 @@ import { GLTFLoader } from 'https://cdn.skypack.dev/three/examples/jsm/loaders/G
 import { OrbitControls } from 'https://cdn.skypack.dev/three/examples/jsm/controls/OrbitControls.js';
 import { EXRLoader } from "https://cdn.skypack.dev/three/examples/jsm/loaders/EXRLoader.js";
 
-var container = document.getElementById("3d")
+var container = document.getElementById("c3d")
 var w = window.innerWidth;
 var h = window.innerHeight;
 
@@ -205,6 +205,7 @@ var mouseX = 0;
 var mouseY = 0;
 var mouseNormal = new THREE.Vector2();
 container.addEventListener("mousemove", function(e){
+   e.preventDefault()
    mouseX = (e.clientX - (w/2)) / w;
    mouseY = (e.clientY - (h/2)) / h;
    mouseNormal.x = ( e.clientX / w ) * 2 - 1;
@@ -212,6 +213,7 @@ container.addEventListener("mousemove", function(e){
 })
 //---get mouse  clicks---
 container.addEventListener("click", function(e){
+   e.preventDefault()
    if (highlighted){
       ray.setFromCamera( mouseNormal, camera);
       var intersect = ray.intersectObject(scene);
