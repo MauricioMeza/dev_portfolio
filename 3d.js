@@ -105,9 +105,9 @@ var cube, cubeLi, cubeGh, cubeAs, cubeIg;
 var plane;
 var planeLoaded = false;
 function loadModels(){
-
-   //robot
-   new GLTFLoader()
+   return new Promise(resolve => {
+      //robot
+      new GLTFLoader()
       .load("./models/robot-notext.glb",
       function ( gltf ) {
          var scale = 1;
@@ -132,76 +132,78 @@ function loadModels(){
          robotLoaded = true;
       });
 
-   //contactCube
-   new GLTFLoader()
-      .load("./models/contactCube.glb",
-      function ( gltf ) {
-         //set initial common parameters
-         const size = .6
-         cube = gltf.scene.children[0];
-         var cubeMat = new THREE.MeshStandardMaterial({
-            color: "#FFFFFF",
-            metalness: 0.6,
-            roughness: 0.6,
-            //roughnessMap: metalRoughness,
-            envMap: scene.background,
-         })
-         cube.material = cubeMat;
-         cube.scale.set(size, size, size);
-         const z = cube.position.z = 1;
-         const y = -4;
+      //contactCubes
+      new GLTFLoader()
+         .load("./models/contactCube.glb",
+         function ( gltf ) {
+            //set initial common parameters
+            const size = .6
+            cube = gltf.scene.children[0];
+            var cubeMat = new THREE.MeshStandardMaterial({
+               color: "#FFFFFF",
+               metalness: 0.6,
+               roughness: 0.6,
+               //roughnessMap: metalRoughness,
+               envMap: scene.background,
+            })
+            cube.material = cubeMat;
+            cube.scale.set(size, size, size);
+            const z = cube.position.z = 1;
+            const y = -4;
 
-         //attributes for each cube
-         cubeLi = cube.clone();
-         cubeLi.name = "cubeLi"
-         cubeLi.material = cubeMat.clone()
-         cubeLi.material.map = liImgC;
-         cubeLi.position.set(-2 - ((w-300)/800), y , z)
-         cubeLi.userData = {URL:"https://www.linkedin.com/in/mauromezab/"}
-         scene.add(cubeLi)
+               //attributes for each cube
+            cubeLi = cube.clone();
+            cubeLi.name = "cubeLi"
+            cubeLi.material = cubeMat.clone()
+            cubeLi.material.map = liImgC;
+            cubeLi.position.set(-2 - ((w-300)/800), y , z)
+            cubeLi.userData = {URL:"https://www.linkedin.com/in/mauromezab/"}
+            scene.add(cubeLi)
+            
+            cubeGh = cube.clone();
+            cubeGh.name = "cubeGh"
+            cubeGh.material = cubeMat.clone()
+            cubeGh.material.map = ghImgC;
+            cubeGh.position.set(-.65 - ((w-300)/2000), y , z)
+            cubeGh.userData = {URL:"https://github.com/MauricioMeza"}
+            scene.add(cubeGh)
+            
+            cubeAs = cube.clone();
+            cubeAs.name = "cubeAs"
+            cubeAs.material = cubeMat.clone()
+            cubeAs.material.map = asImgC;
+            cubeAs.position.set(.65 + ((w-300)/2000), y , z)
+            cubeAs.userData = {URL:"https://www.artstation.com/mmezab"}
+            scene.add(cubeAs)
+            
+            cubeIg = cube.clone()
+            cubeIg.name = "cubeIg"
+            cubeIg.material = cubeMat.clone()
+            cubeIg.material.map = igImgC;
+            cubeIg.position.set(2 + ((w-300)/800), y , z)
+            cubeIg.userData = {URL:"https://www.instagram.com/mauro_meza_3d/"}
+            scene.add(cubeIg)
+         });
+
+         //grid plane
+         new GLTFLoader()
+            .load("./models/plane.glb",
+            function ( gltf ) {
+               plane = gltf.scene.children[0]
+               plane.position.y += 2.5;
+               scene.add(plane)
+               planeLoaded = true;
+            });
          
-         cubeGh = cube.clone();
-         cubeGh.name = "cubeGh"
-         cubeGh.material = cubeMat.clone()
-         cubeGh.material.map = ghImgC;
-         cubeGh.position.set(-.65 - ((w-300)/2000), y , z)
-         cubeGh.userData = {URL:"https://github.com/MauricioMeza"}
-         scene.add(cubeGh)
-         
-         cubeAs = cube.clone();
-         cubeAs.name = "cubeAs"
-         cubeAs.material = cubeMat.clone()
-         cubeAs.material.map = asImgC;
-         cubeAs.position.set(.65 + ((w-300)/2000), y , z)
-         cubeAs.userData = {URL:"https://www.artstation.com/mmezab"}
-         scene.add(cubeAs)
-         
-         cubeIg = cube.clone()
-         cubeIg.name = "cubeIg"
-         cubeIg.material = cubeMat.clone()
-         cubeIg.material.map = igImgC;
-         cubeIg.position.set(2 + ((w-300)/800), y , z)
-         cubeIg.userData = {URL:"https://www.instagram.com/mauro_meza_3d/"}
-         scene.add(cubeIg)
-      });
-   
-   //
-   
-   new GLTFLoader()
-      .load("./models/plane.glb",
-      function ( gltf ) {
-         plane = gltf.scene.children[0]
-         plane.position.y += 2.5;
-         scene.add(plane)
-         planeLoaded = true;
-      });
-     
-   //background
-   new GLTFLoader()
-      .load("./models/scene.glb",
-      function ( gltf ) {
-         scene.add(gltf.scene)
+         //background
+         new GLTFLoader()
+            .load("./models/scene.glb",
+            function ( gltf ) {
+               scene.add(gltf.scene)
+         });
+         resolve('ok');
    });
+   
 }
 externalLoads();
 
