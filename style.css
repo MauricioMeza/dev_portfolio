@@ -60,6 +60,18 @@ canvas{
 	border-radius: 20px;
 	border-style:solid;
 }
+@media (max-width: 768px) {
+	.boton{
+		width: 38%;
+
+	}
+	.n{
+		font-size: 5vw;
+	}
+	.m{
+		font-size: 6vw;
+	}
+  }
 .boton:hover{
 	cursor: pointer;
 	background-color: #f0fdff;
@@ -89,3 +101,21 @@ canvas{
 	top: 50vh;
 	right: 5vw;
 }
+@media (max-width: 768px) {
+	#b1{
+		top: 5vh;
+		left: 10vw;
+	}
+	#b2{
+		top: 5vh;
+		right: 10vw;
+	}
+	#b3{
+		top: 20vh;
+		left: 5vw;
+	}
+	#b4{
+		top: 20vh;
+		right: 5vw;
+	}
+  }
