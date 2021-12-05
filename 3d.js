@@ -7,6 +7,9 @@ var container = document.getElementById("3d")
 var w = window.innerWidth;
 var h = window.innerHeight;
 
+
+/*--------INITIAL BOILERPLATE--------*/
+
 //---CAMERA---
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
@@ -22,65 +25,144 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(w, h);
 container.appendChild( renderer.domElement );
 camera.position.z = 15;
-//light
+
+var controls = new OrbitControls(camera, renderer.domElement);	
+controls.update();
+
 var light = new THREE.AmbientLight( 0xDDDDDD );
 scene.add(light)
 
 
-//---LOAD GLTF MODELS---
-//robot
-var robot;
-var robotLoaded = false;
-new GLTFLoader()
-   .load("./models/robot-smooth.glb",
-   function ( gltf ) {
-      var scale = 1;
-      gltf.body = gltf.scene.children[0];
-      gltf.body.name = "body";
-      gltf.body.rotation.set ( 0, -1.57, 0 );
-      gltf.body.scale.set (scale,scale,scale);
-      gltf.body.position.set ( 0, 0, 0 );
-      gltf.body.material.envMap = scene.background;
-      gltf.body.material.roughness = .75;
-      robot = gltf.body
-      scene.add( robot )
-      robotLoaded = true;
-   });
 
-//plane
-var plane
-var planeLoaded = false;
-new GLTFLoader()
-   .load("./models/plane.glb",
-   function ( gltf ) {
-      plane = gltf.scene.children[0]
-      scene.add(plane)
-      planeLoaded = true;
-   });
+/*--------ASYNCRONOUS EXTERNAL LOADING --------*/
 
-//background
-new GLTFLoader()
-   .load("./models/scene.glb",
-   function ( gltf ) {
-      scene.add(gltf.scene)
-   });
+async function externalLoads(){
+   await loadTextures();
+   await loadHDRI();
+   await loadModels();
+}
+
+//----LOAD TEXTURES----
+var liImgC, ghImgC, asImgC, igImgC;
+function loadTextures(){
+   const textureLoader = new THREE.TextureLoader();
+   liImgC = textureLoader.load("./models/linkedinc.jpg");
+	ghImgC = textureLoader.load("./models/githubc.jpg");
+   asImgC = textureLoader.load("./models/artstationc.jpg");
+	igImgC = textureLoader.load("./models/intagramc.jpg");
+}
 
 
 //---LOAD AMBIENT ILUMINATION---
-const pmremGenerator = new THREE.PMREMGenerator( renderer );
-pmremGenerator.compileEquirectangularShader();
-new EXRLoader()
-		.setDataType( THREE.UnsignedByteType )
-		.load( "./models/studio.exr", function ( texture ) {
+function loadHDRI(){
+   const pmremGenerator = new THREE.PMREMGenerator( renderer );
+   pmremGenerator.compileEquirectangularShader();
+   new EXRLoader()
+         .setDataType( THREE.UnsignedByteType )
+         .load( "./models/studio.exr", function ( texture ) {
 
-		   var exrCubeRenderTarget = pmremGenerator.fromEquirectangular( texture );
-			var exrBackground = exrCubeRenderTarget.texture;
-			scene.background = exrBackground;
-			texture.dispose();
+            var exrCubeRenderTarget = pmremGenerator.fromEquirectangular( texture );
+            var exrBackground = exrCubeRenderTarget.texture;
+            scene.background = exrBackground;
+            texture.dispose();
 	   });
+}
 
 
-//---TRACK MOUSE POSTION FROM CENTER---
+//---LOAD GLTF MODELS---
+var robot;
+var robotLoaded = false;
+var cube, cubeLi, cubeGh, cubeAs, cubeIg; 
+var cubesLoaded = false;
+var plane;
+var planeLoaded = false;
+function loadModels(){
+
+   //robot
+   new GLTFLoader()
+      .load("./models/robot-smooth.glb",
+      function ( gltf ) {
+         var scale = 1;
+         gltf.body = gltf.scene.children[0];
+         gltf.body.name = "body";
+         gltf.body.rotation.set ( 0, -1.57, 0 );
+         gltf.body.scale.set(scale,scale,scale);
+         gltf.body.position.set ( 0, 0, 0 );
+         gltf.body.material.envMap = scene.background;
+         gltf.body.material.roughness = .75;
+         robot = gltf.body
+         scene.add( robot )
+         robotLoaded = true;
+      });
+
+   //contactCube
+   new GLTFLoader()
+      .load("./models/contactCube.glb",
+      function ( gltf ) {
+         //set initial common parameters
+         const size = .6
+         cube = gltf.scene.children[0];
+         var cubeMat = new THREE.MeshStandardMaterial({
+            color: "#FFFFFF",
+            metalness: 0.75,
+            roughness: 0.75,
+            envMap: scene.background,
+         })
+         cube.material = cubeMat;
+         cube.scale.set(size, size, size);
+         console.log(cube.rotation) 
+         const z = cube.position.z;
+         const y = -4;
+
+         //attributes for each cube
+         cubeLi = cube.clone();
+         cubeLi.material = cubeMat.clone()
+         cubeLi.material.map = liImgC;
+         cubeLi.position.set(-2 - ((w-300)/800), y , z)
+         scene.add(cubeLi)
+         
+         cubeGh = cube.clone();
+         cubeGh.material = cubeMat.clone()
+         cubeGh.material.map = ghImgC;
+         cubeGh.position.set(-.65 - ((w-300)/2000), y , z)
+         scene.add(cubeGh)
+         
+         cubeAs = cube.clone();
+         cubeAs.material = cubeMat.clone()
+         cubeAs.material.map = asImgC;
+         cubeAs.position.set(.65 + ((w-300)/2000), y , z)
+         scene.add(cubeAs)
+         
+         cubeIg = cube.clone()
+         cubeIg.material = cubeMat.clone()
+         cubeIg.material.map = igImgC;
+         cubeIg.position.set(2 + ((w-300)/800), y , z)
+         scene.add(cubeIg)
+         
+         cubesLoaded = true;
+      });
+
+   //plane
+   new GLTFLoader()
+      .load("./models/plane.glb",
+      function ( gltf ) {
+         plane = gltf.scene.children[0]
+         scene.add(plane)
+         planeLoaded = true;
+      });
+
+   //background
+   new GLTFLoader()
+      .load("./models/scene.glb",
+      function ( gltf ) {
+         scene.add(gltf.scene)
+   });
+}
+externalLoads();
+
+/*-------- EVENTS AND INTERACTIONS --------*/
+
+//-----track mouse from center
 var mouseX = 0;
 var mouseY = 0;
 container.addEventListener("mousemove", function(e){
@@ -89,7 +171,9 @@ container.addEventListener("mousemove", function(e){
 })
 
 
-//---FINAL---
+
+
+/*--------FINAL RUN --------*/
 function animate(){
    //make robot follow pointer
    if(robotLoaded){
