@@ -160,7 +160,7 @@ function loadModels(){
             cubeLi.position.set(-2 - ((w-300)/800), y , z)
             cubeLi.userData = {
                URL:"https://www.linkedin.com/in/mauromezab/",
-               HTML: `</br><h3 class="sobre">Conecta conmigo en LinkedIn.</h3>`,
+               HTML: `</br></br><h3 class="sobre">Conecta conmigo en LinkedIn.</h3>`,
             }
             scene.add(cubeLi)
             
@@ -171,7 +171,7 @@ function loadModels(){
             cubeGh.position.set(-.65 - ((w-300)/2000), y , z)
             cubeGh.userData = {
                URL:"https://github.com/MauricioMeza",
-               HTML: `</br><h3 class="sobre">Revisa mis repositiorios en Github.</h3>`,
+               HTML: `</br></br><h3 class="sobre">Revisa mis repositiorios en Github.</h3>`,
             }
             scene.add(cubeGh)
             
@@ -182,7 +182,7 @@ function loadModels(){
             cubeAs.position.set(.65 + ((w-300)/2000), y , z)
             cubeAs.userData = {
                URL:"https://www.artstation.com/mmezab",
-               HTML: `</br><h3 class="sobre">Mi mejor Arte 3D en Artstation.</h3>`,
+               HTML: `</br></br><h3 class="sobre">Mi mejor Arte 3D en Artstation.</h3>`,
             }
             scene.add(cubeAs)
             
@@ -193,7 +193,7 @@ function loadModels(){
             cubeIg.position.set(2 + ((w-300)/800), y , z)
             cubeIg.userData = {
                URL:"https://www.instagram.com/mauro_meza_3d/",
-               HTML: `</br><h3 class="sobre">Trabajos varios de 3D y Desarrollo en Instagram.</h3>`,
+               HTML: `</br></br><h3 class="sobre">Trabajos varios de Desarrollo y 3D en Instagram.</h3>`,
             }
             scene.add(cubeIg)
          });

@@ -1,4 +1,5 @@
 var title = document.getElementById("title")
+var pantalla = document.getElementById("pantalla")
 var b1 = document.getElementById("b1")
 var b2 = document.getElementById("b2")
 var b3 = document.getElementById("b3")
@@ -25,25 +26,33 @@ const t4 = `</br>
             </br>
             quien soy yo, mi experiencia y CV
             </h3>`
-const defaultText = `<h2 id="nome"><strong>Mauricio Meza Burbano</strong></h2>
+
+const defaultText =`<h2 id="nome"><strong>Mauricio Meza Burbano</strong></h2>
                     <h3 class="sobre">Programador y Artista 3D </h3>
                     <h3 class="sobre">Software | Juegos | XR</h3>`
 
 
 //Funcion para cambiar el texto
-function changeText(e, text){
+function changeText(e, text, percentage, img){
     e.preventDefault()
     title.innerHTML = text;
+    if(percentage){
+        pantalla.style.opacity = 1;
+        pantalla.style.marginLeft = percentage;
+        pantalla.src = "./models/" + img;
+    }else{
+        pantalla.style.opacity = 0;
+    }
 
 }
-b1.addEventListener("mouseover", (e) => {changeText(e, t1)})
-b2.addEventListener("mouseover", (e) => {changeText(e, t2)})
-b3.addEventListener("mouseover", (e) => {changeText(e, t3)})
-b4.addEventListener("mouseover", (e) => {changeText(e, t4)})
+b1.addEventListener("mouseover", (e) => {changeText(e, t1, "-11.5%", "pantalla1.png")})
+b2.addEventListener("mouseover", (e) => {changeText(e, t2, "-10.5%", "pantalla2.png")})
+b3.addEventListener("mouseover", (e) => {changeText(e, t3, "-11.5%", "pantalla3.png")})
+b4.addEventListener("mouseover", (e) => {changeText(e, t4, "-10.5%", "pantalla4.png")})
 
 
 //Funcion para devolver al texto original
-b1.addEventListener("mouseout", (e) => {changeText(e, defaultText)})
-b2.addEventListener("mouseout", (e) => {changeText(e, defaultText)})
-b3.addEventListener("mouseout", (e) => {changeText(e, defaultText)})
-b4.addEventListener("mouseout", (e) => {changeText(e, defaultText)})
+b1.addEventListener("mouseout", (e) => {changeText(e, defaultText, false)})
+b2.addEventListener("mouseout", (e) => {changeText(e, defaultText, false)})
+b3.addEventListener("mouseout", (e) => {changeText(e, defaultText, false)})
+b4.addEventListener("mouseout", (e) => {changeText(e, defaultText, false)})

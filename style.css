@@ -1,3 +1,6 @@
+track{
+	box-shadow: inset 0 0 490px black;
+}
 body{
 	margin: 0;
 	min-height: 100%;
@@ -15,7 +18,7 @@ canvas{
 	z-index: -9999;
 }
 
-/*---TITULO Y TEXTO DE INFORMACION---*/
+/*------TITULO Y TEXTO DE INFORMACION------*/
 #title{
 	width: 80%;
 	text-align: center;
@@ -43,17 +46,15 @@ canvas{
 	}
   }
 
-/*---BOTONES DE SELECCION---*/
-
-/*-tamaño de letra-*/
+/*------BOTONES DE SELECCION------*/
+/*---tamaño de letra---*/
 .n{
 	font-size: 2.1vw;
 }
 .m{
 	font-size: 3vw;
 }
-
-/*-estilo-*/
+/*---estilo---*/
 .boton{
 	width: 22%;
 	padding: 2vh 0 2vh 0;
@@ -64,7 +65,7 @@ canvas{
 	border-radius: 20px;
 	border-style:solid;
 	transition: 0.3s;
-	box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5) ;
+	box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4) ;
 
 }
 @media (max-width: 768px) {
@@ -88,8 +89,7 @@ canvas{
 	border-color: #3b4144;
 	box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2) ;
 }
-
-/*-posicion-*/
+/*---posicion-*/
 #b1{
 	position: fixed;
 	top: 15vh;
@@ -128,3 +128,14 @@ canvas{
 		right: 5vw;
 	}
   }
+/*---pantalla---*/
+#pantalla{
+	opacity: 0;
+	position: fixed;
+	bottom: 67%;
+	width: 22%;
+	height: auto;
+	left: 50%;
+	margin-left: -9%;
+	transition: opacity .2s;
+}
