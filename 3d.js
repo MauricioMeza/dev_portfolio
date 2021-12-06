@@ -5,7 +5,6 @@ import { EXRLoader } from "https://cdn.skypack.dev/three/examples/jsm/loaders/EX
 
 var container = document.getElementById("c3d")
 var track = document.getElementById("track")
-var title = document.getElementById("title")
 var w = window.innerWidth;
 var h = window.innerHeight;
 
@@ -129,8 +128,6 @@ function loadModels(){
             roughnessMap: robotR,
             envMap: background,
          })
-         //gltf.body.material.envMap = scene.background;
-         //gltf.body.material.roughness = .75;
          robot = gltf.body
          robot.material = robotMat
          scene.add( robot )
@@ -148,7 +145,6 @@ function loadModels(){
                color: "#FFFFFF",
                metalness: 0.6,
                roughness: 0.6,
-               //roughnessMap: metalRoughness,
                envMap: background,
             })
             cube.material = cubeMat;
@@ -156,13 +152,16 @@ function loadModels(){
             const z =  1;
             const y = -4;
 
-               //attributes for each cube
+            //attributes for each cube
             cubeLi = cube.clone();
             cubeLi.name = "cubeLi"
             cubeLi.material = cubeMat.clone()
             cubeLi.material.map = liImgC;
             cubeLi.position.set(-2 - ((w-300)/800), y , z)
-            cubeLi.userData = {URL:"https://www.linkedin.com/in/mauromezab/"}
+            cubeLi.userData = {
+               URL:"https://www.linkedin.com/in/mauromezab/",
+               HTML: `</br><h3 class="sobre">Conecta conmigo en LinkedIn.</h3>`,
+            }
             scene.add(cubeLi)
             
             cubeGh = cube.clone();
@@ -170,7 +169,10 @@ function loadModels(){
             cubeGh.material = cubeMat.clone()
             cubeGh.material.map = ghImgC;
             cubeGh.position.set(-.65 - ((w-300)/2000), y , z)
-            cubeGh.userData = {URL:"https://github.com/MauricioMeza"}
+            cubeGh.userData = {
+               URL:"https://github.com/MauricioMeza",
+               HTML: `</br><h3 class="sobre">Revisa mis repositiorios en Github.</h3>`,
+            }
             scene.add(cubeGh)
             
             cubeAs = cube.clone();
@@ -178,7 +180,10 @@ function loadModels(){
             cubeAs.material = cubeMat.clone()
             cubeAs.material.map = asImgC;
             cubeAs.position.set(.65 + ((w-300)/2000), y , z)
-            cubeAs.userData = {URL:"https://www.artstation.com/mmezab"}
+            cubeAs.userData = {
+               URL:"https://www.artstation.com/mmezab",
+               HTML: `</br><h3 class="sobre">Mi mejor Arte 3D en Artstation.</h3>`,
+            }
             scene.add(cubeAs)
             
             cubeIg = cube.clone()
@@ -186,7 +191,10 @@ function loadModels(){
             cubeIg.material = cubeMat.clone()
             cubeIg.material.map = igImgC;
             cubeIg.position.set(2 + ((w-300)/800), y , z)
-            cubeIg.userData = {URL:"https://www.instagram.com/mauro_meza_3d/"}
+            cubeIg.userData = {
+               URL:"https://www.instagram.com/mauro_meza_3d/",
+               HTML: `</br><h3 class="sobre">Trabajos varios de 3D y Desarrollo en Instagram.</h3>`,
+            }
             scene.add(cubeIg)
          });
          
@@ -239,7 +247,7 @@ container.addEventListener("click", function(e){
    }
 })
 
-//---resize events---
+//---resize events for responsiveness---
 window.addEventListener("resize", function(e){
    w = window.innerWidth;
    h = window.innerHeight;
@@ -262,6 +270,7 @@ function highlightAction(obj, img, inverted, link){
       highlighted = true;
       document.body.style.cursor = "pointer";
       obj.position.z = 1.5;
+      title.innerHTML = obj.userData.HTML;
    }
    
    if(obj.rotation.z >= .15){
@@ -280,6 +289,7 @@ function highlightAction(obj, img, inverted, link){
       obj.rotation.z -= 0.05;
    }
 }
+
 //---reset all highlighted actions---4
 function resethighlight(){
    if(highlighted){
@@ -296,6 +306,7 @@ function resethighlight(){
       cubeAs.position.z = 1;
       cubeIg.position.z = 1;
       document.body.style.cursor = "default";
+      title.innerHTML = defaultText;
       highlighted = false;
    }  
 }
