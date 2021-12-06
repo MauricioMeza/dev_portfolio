@@ -5,6 +5,7 @@ import { EXRLoader } from "https://cdn.skypack.dev/three/examples/jsm/loaders/EX
 
 var container = document.getElementById("c3d")
 var track = document.getElementById("track")
+var title = document.getElementById("title")
 var w = window.innerWidth;
 var h = window.innerHeight;
 
@@ -22,7 +23,9 @@ const camera = new THREE.PerspectiveCamera(
 
 
 //---RENDERER--
-const renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGLRenderer({
+   //antialias: true
+});
 renderer.setSize(w, h);
 container.appendChild( renderer.domElement );
 camera.position.z = 20;
@@ -78,6 +81,7 @@ function loadTextures(){
 
 
 //---LOAD AMBIENT ILUMINATION---
+var background;
 function loadHDRI(){
    return new Promise(resolve => {
       const pmremGenerator = new THREE.PMREMGenerator( renderer );
@@ -90,7 +94,8 @@ function loadHDRI(){
                var exrBackground = exrCubeRenderTarget.texture;
                exrBackground.flipY = false;
                exrBackground.rotation = 3.14;
-               scene.background = exrBackground;
+               background = exrBackground
+               //scene.background = exrBackground;
                texture.dispose();
                resolve('ok');
          });
@@ -122,7 +127,7 @@ function loadModels(){
             metalness: 0.5,
             roughness: 0.75,
             roughnessMap: robotR,
-            envMap: scene.background,
+            envMap: background,
          })
          //gltf.body.material.envMap = scene.background;
          //gltf.body.material.roughness = .75;
@@ -144,7 +149,7 @@ function loadModels(){
                metalness: 0.6,
                roughness: 0.6,
                //roughnessMap: metalRoughness,
-               envMap: scene.background,
+               envMap: background,
             })
             cube.material = cubeMat;
             cube.scale.set(size, size, size);
@@ -184,7 +189,7 @@ function loadModels(){
             cubeIg.userData = {URL:"https://www.instagram.com/mauro_meza_3d/"}
             scene.add(cubeIg)
          });
-
+         
          //grid plane
          new GLTFLoader()
             .load("./models/plane.glb",
@@ -274,13 +279,6 @@ function highlightAction(obj, img, inverted, link){
    if(rotateright){
       obj.rotation.z -= 0.05;
    }
-      
-   /*
-   if(inverted){
-      obj.rotation.y += 0.025;  
-   }else{
-      obj.rotation.y -= 0.025;  
-   }*/
 }
 //---reset all highlighted actions---4
 function resethighlight(){
@@ -309,6 +307,7 @@ function animate(){
       robot.rotation.y = mouseX - 1.57;
       robot.rotation.x = mouseY;
    }
+   
    //animate plane grid
    if(planeLoaded){
       if(plane.position.z >= -17){
@@ -330,16 +329,16 @@ function animate(){
             resethighlight();
             break;
          case "cubeLi":
-            highlightAction(obj, liImg, true, "https://www.linkedin.com/in/mauromezab/")
+            highlightAction(obj, liImg)
             break;
          case "cubeGh":
-            highlightAction(obj, ghImg, true, "https://github.com/MauricioMeza")
+            highlightAction(obj, ghImg)
             break;
          case "cubeAs":
-            highlightAction(obj, asImg, false, "https://www.artstation.com/mmezab")
+            highlightAction(obj, asImg)
             break;
          case "cubeIg":
-            highlightAction(obj, igImg, false, "https://www.instagram.com/mauro_meza_3d/")
+            highlightAction(obj, igImg)
             break;
       }
    }

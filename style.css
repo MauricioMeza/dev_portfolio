@@ -1,6 +1,8 @@
+#track{
+}
 body{
 	margin: 0;
-	font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	min-height: 100%;
 }
 canvas{
 	width: 100%;
@@ -14,6 +16,8 @@ canvas{
 	left: 0;
 	z-index: -9999;
 }
+
+/*---TITULO Y TEXTO DE INFORMACION---*/
 #title{
 	width: 80%;
 	text-align: center;
@@ -22,6 +26,7 @@ canvas{
 	left: 50%;
 	margin-left: -40%;
 	color: #3b4144;
+	transition: 0.3s;
 }
 
 #nome{
@@ -29,6 +34,7 @@ canvas{
 }
 .sobre{
 	font-size: 4vh;
+	margin: 0;
 }
 @media (max-width: 576px) {
 	#nome{
@@ -43,7 +49,7 @@ canvas{
 
 /*-tamaño de letra-*/
 .n{
-	font-size: 2.5vw;
+	font-size: 2.1vw;
 }
 .m{
 	font-size: 3vw;
@@ -60,6 +66,8 @@ canvas{
 	border-radius: 20px;
 	border-style:solid;
 	transition: 0.3s;
+	box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5) ;
+
 }
 @media (max-width: 768px) {
 	.boton{
@@ -80,6 +88,7 @@ canvas{
 	color: #3b4144;
 	border-width: px;
 	border-color: #3b4144;
+	box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2) ;
 }
 
 /*-posicion-*/
