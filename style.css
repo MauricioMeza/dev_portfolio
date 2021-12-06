@@ -137,5 +137,5 @@ canvas{
 	height: auto;
 	left: 50%;
 	margin-left: -9%;
-	transition: opacity .2s;
+	transition: opacity .1s;
 }

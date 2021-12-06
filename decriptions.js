@@ -37,9 +37,9 @@ function changeText(e, text, percentage, img){
     e.preventDefault()
     title.innerHTML = text;
     if(percentage){
-        pantalla.style.opacity = 1;
-        pantalla.style.marginLeft = percentage;
         pantalla.src = "./models/" + img;
+        pantalla.style.marginLeft = percentage;
+        pantalla.style.opacity = 1;
     }else{
         pantalla.style.opacity = 0;
     }
