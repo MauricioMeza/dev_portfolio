@@ -29,10 +29,10 @@ renderer.setSize(w, h);
 container.appendChild( renderer.domElement );
 camera.position.z = 20;
 
-/*
+
 var controls = new OrbitControls(camera, renderer.domElement);	
 controls.update();
-*/
+
 
 var light = new THREE.AmbientLight( 0xDDDDDD );
 scene.add(light)
