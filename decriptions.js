@@ -31,7 +31,6 @@ const defaultText =`<h2 id="nome"><strong>Mauricio Meza Burbano</strong></h2>
                     <h3 class="sobre">Programador y Artista 3D </h3>
                     <h3 class="sobre">Software | Juegos | XR</h3>`
 
-
 //Funcion para cambiar el texto
 function changeText(e, text, percentage, img){
     e.preventDefault()
@@ -42,6 +41,7 @@ function changeText(e, text, percentage, img){
         pantalla.style.opacity = 1;
     }else{
         pantalla.style.opacity = 0;
+        pantalla.src = "./models/pantallastatic.png"
     }
 
 }
