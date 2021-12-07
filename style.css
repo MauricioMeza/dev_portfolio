@@ -79,16 +79,21 @@ canvas{
 	.m{
 		font-size: 6vw;
 	}
-  }
-.boton:hover{
-	width: 23%;
-	cursor: pointer;
-	background-color: #f0fdff;
-	color: #3b4144;
-	border-width: px;
-	border-color: #3b4144;
-	box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2) ;
 }
+
+@media (min-width: 769px) {
+	.boton:hover{
+		width: 23%;
+		cursor: pointer;
+		background-color: #f0fdff;
+		color: #3b4144;
+		border-width: px;
+		border-color: #3b4144;
+		box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2) ;
+	}
+}
+  
+
 /*---posicion-*/
 #b1{
 	position: fixed;

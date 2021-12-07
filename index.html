@@ -5,22 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> 
     <title>Document</title>
 </head>
 <body>
-    <button id="b1" class="boton">
-        <h2 class="m">SOFTWARE</h2>
-    </button>
-    <button id="b2" class="boton">
-        <h2 class="m">JUEGOS</h2>
-    </button>   
-    <button id="b3" class="boton">
-        <h2 class="n">ARTE 3D</h2>
-    </button>
-    <button id="b4" class="boton">
-        <h2 class="n">INFORMACIÓN</h2>
-    </button>
     <div id="track">
+        <button id="b1" class="boton" data-bs-toggle="modal" data-bs-target="#softModal">
+            <h2 class="m">SOFTWARE</h2>
+        </button>
+        <button id="b2" class="boton" data-bs-toggle="modal" data-bs-target="#gamesModal">
+            <h2 class="m">JUEGOS</h2>
+        </button>   
+        <button id="b3" class="boton" data-bs-toggle="modal" data-bs-target="#artModal">
+            <h2 class="n">ARTE 3D</h2>
+        </button>
+        <button id="b4" class="boton" data-bs-toggle="modal" data-bs-target="#infoModal">
+            <h2 class="n">INFORMACIÓN</h2>
+        </button>
+    
         <img src="./models/pantallastatic.png" id="pantalla">
         <div id="c3d"></div>
         <span id="title">
@@ -29,8 +31,68 @@
             <h3 class="sobre">Software | Videojuegos | XR</h3>
         </span>
     </div>
+
+    <div class="modal" id="softModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title">SOFTWARE</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <p>Modal body text goes here.</p>
+                </div>
+            
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="gamesModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title">JUEGOS</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <p>Modal body text goes here.</p>
+                </div>
+            
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="artModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title">ARTE 3D</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <p>Modal body text goes here.</p>
+                </div>
+            
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="infoModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title">INFORMACIÓN</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <p>Modal body text goes here.</p>
+                </div>
+            
+            </div>
+        </div>
+    </div>
     
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>  
     <script src="decriptions.js"></script>
     <script type="module" src="3d.js"></script>
     

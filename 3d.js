@@ -29,10 +29,10 @@ renderer.setSize(w, h);
 container.appendChild( renderer.domElement );
 camera.position.z = 20;
 
-
+/*
 var controls = new OrbitControls(camera, renderer.domElement);	
 controls.update();
-
+*/
 
 var light = new THREE.AmbientLight( 0xDDDDDD );
 scene.add(light)
@@ -237,12 +237,14 @@ track.addEventListener("mousemove", function(e){
 //---get mouse clicks---
 container.addEventListener("click", function(e){
    e.preventDefault()
-   if (highlighted){
+   if (highlighted || mobile){
       ray.setFromCamera( mouseNormal, camera);
       var intersect = ray.intersectObject(scene);
       if (intersect.length > 0) {
          var obj = intersect[0].object
-         window.open(obj.userData.URL) 
+         if(obj.userData.URL != undefined){
+            window.open(obj.userData.URL)
+         } 
       }
    }
 })
@@ -265,7 +267,7 @@ var highlighted = false;
 var rotateleft, rotateright;
 rotateleft = true;
 function highlightAction(obj, img, inverted, link){
-   if(!highlighted){
+   if(!highlighted && !mobile){
       obj.material.map = img;
       highlighted = true;
       document.body.style.cursor = "pointer";
@@ -282,10 +284,10 @@ function highlightAction(obj, img, inverted, link){
       rotateright = false;
    }
     
-   if(rotateleft){
+   if(rotateleft && !mobile){
       obj.rotation.z += 0.05;
    }
-   if(rotateright){
+   if(rotateright && !mobile){
       obj.rotation.z -= 0.05;
    }
 }

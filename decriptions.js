@@ -5,6 +5,9 @@ var b2 = document.getElementById("b2")
 var b3 = document.getElementById("b3")
 var b4 = document.getElementById("b4")
 
+var mobile = screen.orientation.type == 'portrait-primary' || screen.orientation.angle == 90;
+
+
 const t1 = `</br>
             <h3 class="sobre">Proyectos de Desarrollo Web y Movíl
             </br>
@@ -34,16 +37,17 @@ const defaultText =`<h2 id="nome"><strong>Mauricio Meza Burbano</strong></h2>
 //Funcion para cambiar el texto
 function changeText(e, text, percentage, img){
     e.preventDefault()
-    title.innerHTML = text;
-    if(percentage){
-        pantalla.src = "./models/" + img;
-        pantalla.style.marginLeft = percentage;
-        pantalla.style.opacity = 1;
-    }else{
-        pantalla.style.opacity = 0;
-        pantalla.src = "./models/pantallastatic.png"
+    if(!mobile){
+        title.innerHTML = text;
+        if(percentage){
+            pantalla.src = "./models/" + img;
+            pantalla.style.marginLeft = percentage;
+            pantalla.style.opacity = 1;
+        }else{
+            pantalla.style.opacity = 0;
+            pantalla.src = "./models/pantallastatic.png"
+        }
     }
-
 }
 b1.addEventListener("mouseover", (e) => {changeText(e, t1, "-11.5%", "pantalla1.png")})
 b2.addEventListener("mouseover", (e) => {changeText(e, t2, "-10.5%", "pantalla2.png")})
@@ -56,3 +60,9 @@ b1.addEventListener("mouseout", (e) => {changeText(e, defaultText, false)})
 b2.addEventListener("mouseout", (e) => {changeText(e, defaultText, false)})
 b3.addEventListener("mouseout", (e) => {changeText(e, defaultText, false)})
 b4.addEventListener("mouseout", (e) => {changeText(e, defaultText, false)})
+
+var myModal = document.getElementById('softModal')
+
+myModal.addEventListener('shown.bs.modal', function () {
+  b1.focus()
+})
