@@ -223,8 +223,11 @@ function loadModels(){
 //---FINISH LOADING---
 function loaded(){
    return new Promise(resolve => {
-      load.style.opacity = 0;
-      load.style.visibility = "hidden";
+
+      setTimeout(() => {
+         load.style.opacity = 0;
+         load.style.visibility = "hidden";       
+      }, 500);
       resolve('ok')     
    });
 }
