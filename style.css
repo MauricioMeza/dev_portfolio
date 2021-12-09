@@ -1,3 +1,30 @@
+/*------PANTALLA DE CARGA------*/
+#loading{
+	background-color: #dddddd;
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	z-index: 10;
+}
+#loading-spin{
+	--load-height: 14vw;
+	position: fixed;
+	width: var(--load-height);
+	height: var(--load-height);
+	top: 30vh;
+	left: calc(50vw - (var(--load-height)/2));
+}
+#loading-img{
+	--icon-height: 10vw;
+	position: fixed;
+	width: var(--icon-height);
+	height: var(--icon-height);
+	top: calc(30vh + (var(--icon-height)/6));
+	left: calc(50vw - (var(--icon-height)/2));
+	clip: rect(0, 10vw, 10vw, 0);
+}
+
+/*------BASE DEL MENU------*/
 track{
 	box-shadow: inset 0 0 490px black;
 }
@@ -18,6 +45,7 @@ canvas{
 	z-index: -9999;
 }
 
+
 /*------TITULO Y TEXTO DE INFORMACION------*/
 #title{
 	width: 80%;
@@ -28,6 +56,7 @@ canvas{
 	margin-left: -40%;
 	color: #3b4144;
 	transition: 0.3s;
+	z-index: 11;
 }
 
 #nome{
