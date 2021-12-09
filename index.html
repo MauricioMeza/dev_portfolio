@@ -6,17 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet"> 
     <title>Document</title>
 </head>
 <body>
-    <div id="loading">
-        <img id="loading-img"src="models/robotbw.png">
-        <div id="loading-spin" class="spinner-border" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>       
-    </div>
 
     <div id="track">
+
+        <div id="loading">
+            <img id="loading-img"src="models/robotbw.png">
+            <div id="loading-spin" class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>       
+        </div>
+
         <button id="b1" class="boton" data-bs-toggle="modal" data-bs-target="#softModal">
             <h2 class="m">SOFTWARE</h2>
         </button>
@@ -59,13 +62,82 @@
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title">JUEGOS</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h4 class="modal-title">VIDEOJUEGOS Y EXPERIENCIAS INTERACTIVAS</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+
                 <div class="modal-body">
-                <p>Modal body text goes here.</p>
+
+                    <div class="card mb-3 shadow">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="./models/gi-sapo.png" class="img-fluid rounded-start">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">SAPO 3D - Unity Game (2021)</h5>
+                                    <p class="card-text">Juego tradicional Colombiano de Sapo/Rana.</p>
+                                    <ul>
+                                        <li>
+                                            <p class="card-text">Configure Controles, Físicas y Sonidos con Scripts de C# en el Game Engine Unity para una experiencia
+                                                web del juego típico colombiano de sapo/rana.</p>    
+                                        </li>
+                                        <li>
+                                            <p class="card-text">Implemente un Backend desarrollado en Node.js con Javascript para un online leaderboard.</p>    
+                                        </li>
+                                    </ul>
+                                    <a href="https://mauriciomeza.github.io/Sapo3D/">
+                                        <i class="bi bi-controller"></i>
+                                        <span> Jugar en Linea</span>
+                                    </a></br>
+                                    <a href="https://github.com/MauricioMeza/Sapo3D">
+                                        <i class="bi bi-github"></i>
+                                        <span> Respositorio del Juego</span>
+                                    </a></br>
+                                    <a href="https://github.com/MauricioMeza/SapoBackend">
+                                        <i class="bi bi-github"></i>
+                                        <span> Respositorio del Backend</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card mb-3 shadow">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="./models/gi-lajas.png" class="img-fluid rounded-start">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">SANTUARIO DE LAS LAJAS - Unity Game (2020)</h5>
+                                    <p class="card-text">Experiencia Web para explorar la arquitectura del Santuario de Las Lajas.</p>
+                                    <ul>
+                                        <li>
+                                            <p class="card-text">Digitalice el Santuario de Las Lajas en un modelo 3D realizado en Blender.</p>    
+                                        </li>
+                                        <li>
+                                            <p class="card-text">Programe Controles y Luces con interacción Web Multiplataforma en Scripts de C# para el motor Unity.</p>    
+                                        </li>
+                                        <li>
+                                            <p class="card-text">Proyecto ganador de estimulos por parte de la secretaria municipal de cultura de Pasto.</p>    
+                                        </li>
+                                    </ul>
+                                    <a href="https://mauriciomeza.github.io/Lajas3D/virtual_tour.html">
+                                        <i class="bi bi-controller"></i>
+                                        <span> Jugar en Linea</span>
+                                    </a></br>
+                                    <a href="https://github.com/MauricioMeza/Lajas3D">
+                                        <i class="bi bi-github"></i>
+                                        <span> Respositorio del Juego</span>
+                                    </a></br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-            
             </div>
         </div>
     </div>
@@ -78,9 +150,74 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                <p>Modal body text goes here.</p>
+                    
+                    <div class="card mb-3 shadow">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="./models/3d-f1.png" class="img-fluid rounded-start">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">TROFEOS FORMULA 1 - Blender 3D Model (2021)</h5>
+                                    <p class="card-text">Modelos 3D de los Trofeos de diferentes grandes premio de Formula 1.</p>
+                                    <ul>
+                                        <li>
+                                            <p class="card-text">Creadas con Subsurface Box Modellng.</p>    
+                                        </li>
+                                        <li>
+                                            <p class="card-text">Uso de Texturas PBR.</p>    
+                                        </li>
+                                        <li>
+                                            <p class="card-text">Modelos Watertight para Impresion 3D a la venta en Sketchfab.</p>    
+                                        </li>
+                                    </ul>
+                                    <a href="https://www.artstation.com/artwork/KOOWER">
+                                        <i class="bi bi-badge-ar"></i>
+                                        <span> Renders en Artstation</span>
+                                    </a></br>
+                                    <a href="https://skfb.ly/orIqT">
+                                        <i class="bi bi-badge-3d"></i>
+                                        <span> Modelo 3D en Sketchfab</span>
+                                    </a></br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card mb-3 shadow">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="./models/3d-col.png" class="img-fluid rounded-start">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">MAPA COLOMBIA - Blender 3D Model (2020)</h5>
+                                    <p class="card-text">Mapa 3D con la geografia, ciudades y divisiones politicas Colombianas.</p>
+                                    <ul>
+                                        <li>
+                                            <p class="card-text">Uso de Texturas PBR.</p>    
+                                        </li>
+                                        <li>
+                                            <p class="card-text">Arboles creados con un Sistema de Particulas.</p>    
+                                        </li>
+                                        <li>
+                                            <p class="card-text">Interactividad agregada en Sketchfab.</p>    
+                                        </li>
+                                    </ul>
+                                    <a href="https://skfb.ly/6XC6K">
+                                        <i class="bi bi-badge-3d"></i>
+                                        <span> Modelo 3D en Sketchfab</span>
+                                    </a></br>
+                                    <a href="https://www.artstation.com/artwork/Vgbz5n">
+                                        <i class="bi bi-badge-ar"></i>
+                                        <span> Renders en Artstation</span>
+                                    </a></br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-            
             </div>
         </div>
     </div>
