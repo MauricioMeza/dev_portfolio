@@ -7,6 +7,7 @@ var container = document.getElementById("c3d")
 var track = document.getElementById("track")
 var w = window.innerWidth;
 var h = window.innerHeight;
+var load = document.getElementById("loading")
 
 
 /*--------INITIAL BOILERPLATE--------*/
@@ -42,9 +43,10 @@ scene.add(light)
 /*--------ASYNCRONOUS EXTERNAL LOADING --------*/
 
 async function externalLoads(){
-   await loadHDRI();
-   await loadTextures();
+   await loadHDRI();  
+   await loadTextures();  
    await loadModels();
+   await loaded();
 }
 
 //----LOAD TEXTURES----
@@ -94,7 +96,6 @@ function loadHDRI(){
                exrBackground.flipY = false;
                exrBackground.rotation = 3.14;
                background = exrBackground
-               //scene.background = exrBackground;
                texture.dispose();
                resolve('ok');
          });
@@ -217,6 +218,15 @@ function loadModels(){
          resolve('ok');
    });
    
+}
+
+//---FINISH LOADING---
+function loaded(){
+   return new Promise(resolve => {
+      load.style.opacity = 0;
+      load.style.visibility = "hidden";
+      resolve('ok')     
+   });
 }
 externalLoads();
 
