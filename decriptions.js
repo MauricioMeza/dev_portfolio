@@ -40,12 +40,12 @@ function changeText(e, text, percentage, img){
     if(!mobile){
         title.innerHTML = text;
         if(percentage){
-            pantalla.src = "./models/" + img;
+            pantalla.src = "./models/img/" + img;
             pantalla.style.marginLeft = percentage;
             pantalla.style.opacity = 1;
         }else{
             pantalla.style.opacity = 0;
-            pantalla.src = "./models/pantallastatic.png"
+            pantalla.src = "./models/img/pantallastatic.png"
         }
     }
 }

@@ -248,8 +248,9 @@ track.addEventListener("mousemove", function(e){
 })
 
 //---get mouse clicks---
-container.addEventListener("click", function(e){
+track.addEventListener("click", function(e){
    e.preventDefault()
+   console.log(highlighted)
    if (highlighted || mobile){
       ray.setFromCamera( mouseNormal, camera);
       var intersect = ray.intersectObject(scene);
