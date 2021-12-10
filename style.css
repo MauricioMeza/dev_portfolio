@@ -78,6 +78,7 @@ canvas{
   }
 
 /*------BOTONES DE SELECCION------*/
+
 /*---tamaño de letra---*/
 .n{
 	font-size: 2.1vw;
@@ -85,6 +86,7 @@ canvas{
 .m{
 	font-size: 3vw;
 }
+
 /*---estilo---*/
 .boton{
 	width: 22%;
@@ -101,6 +103,18 @@ canvas{
 }
 @media (max-width: 768px) {
 	.boton{
+		width: 32%;
+
+	}
+	.n{
+		font-size: 3vw;
+	}
+	.m{
+		font-size: 4vw;
+	}
+}
+@media (max-width: 425px) {
+	.boton{
 		width: 38%;
 
 	}
@@ -112,6 +126,7 @@ canvas{
 	}
 }
 
+/*--no hover mobil --*/
 @media (min-width: 769px) {
 	.boton:hover{
 		width: 23%;
@@ -124,7 +139,6 @@ canvas{
 	}
 }
   
-
 /*---posicion-*/
 #b1{
 	position: fixed;
@@ -156,6 +170,25 @@ canvas{
 		right: 10vw;
 	}
 	#b3{
+		top: 25vh;
+		left: 5vw;
+	}
+	#b4{
+		top: 25vh;
+		right: 5vw;
+	}
+  }
+  
+  @media (max-width: 425px) {
+	#b1{
+		top: 5vh;
+		left: 10vw;
+	}
+	#b2{
+		top: 5vh;
+		right: 10vw;
+	}
+	#b3{
 		top: 20vh;
 		left: 5vw;
 	}
@@ -164,6 +197,7 @@ canvas{
 		right: 5vw;
 	}
   }
+
 /*---pantalla---*/
 #pantalla{
 	opacity: 0;
@@ -174,4 +208,9 @@ canvas{
 	left: 50%;
 	margin-left: -9%;
 	transition: opacity .1s;
+}
+
+/*------MODAL------*/
+.modal-content{
+	background-color: #eee !important;
 }
