@@ -224,6 +224,31 @@ canvas{
 	transition: opacity .1s;
 }
 
+/*------INFORMACION------*/
+#img-info{
+	width: 98%;
+	height: auto;
+	border-radius: 5%;
+	margin: 2% ;
+}
+
+.txt-info{
+	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+	background-color: rgb(250, 250, 250);
+	border-radius: 5%;
+	padding: 5%;
+	margin: 1% 0 2% 0;
+}
+
+.logo-info{
+	width: 100%;
+	height: auto;
+}
+
+.col-sm-2{
+	padding: 0 2% 0 2% !important;
+}
+
 /*------MODAL------*/
 .modal-content{
 	background-color: #eee !important;
@@ -237,4 +262,5 @@ canvas{
 	align-self: center;
 	margin: 2px;
 }
+
 

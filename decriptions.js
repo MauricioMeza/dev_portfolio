@@ -67,8 +67,14 @@ b2.addEventListener("mouseout", (e) => {changeText(e, defaultText, false)})
 b3.addEventListener("mouseout", (e) => {changeText(e, defaultText, false)})
 b4.addEventListener("mouseout", (e) => {changeText(e, defaultText, false)})
 
+//Incializacion de Modales Bootstrap
 var myModal = document.getElementById('softModal')
-
 myModal.addEventListener('shown.bs.modal', function () {
   b1.focus()
+})
+
+//Incializacion de Tooltips Bootstrap
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl)
 })
