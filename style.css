@@ -217,6 +217,15 @@ canvas{
 .modal-content{
 	background-color: #eee !important;
 }
+
+.col-lg-4{
+	display: grid;
+	background-color: rgb(240, 240, 240);
+}
+.img-prev{
+	align-self: center;
+	margin: 2px;
+}
 /*
 .img-prev {
 	position: relative;
