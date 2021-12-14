@@ -46,6 +46,7 @@ canvas{
 	width: 100vw;
 	height: 100vh;
 	box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.25);
+	perspective: 1000px;
 }
 
 
@@ -210,6 +211,7 @@ canvas{
 	height: auto;
 	left: 50%;
 	margin-left: -9%;
+	perspective: inherit;
 	transition: opacity .1s;
 }
 

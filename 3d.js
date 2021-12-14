@@ -225,9 +225,10 @@ function loadModels(){
 function loaded(){
    return new Promise(resolve => {
       setTimeout(() => {
+         load.style.visibility = "hidden";
          load.style.opacity = 0;
-         load.style.visibility = "hidden";       
-      }, 250);
+                
+      }, 200);
       resolve('ok')     
    });
 }

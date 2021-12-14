@@ -43,6 +43,12 @@ function changeText(e, text, percentage, img){
             pantalla.src = "./models/img/" + img;
             pantalla.style.marginLeft = percentage;
             pantalla.style.opacity = 1;
+            if(parseInt(percentage) == -11){
+                pantalla.style.transform = "rotateY(-8deg)"
+            }
+            else if(parseInt(percentage) == -10){
+                pantalla.style.transform = "rotateY(8deg)"
+            }
         }else{
             pantalla.style.opacity = 0;
             pantalla.src = "./models/img/pantallastatic.png"
