@@ -13,7 +13,20 @@
 </head>
 <body>
 
+    <span id="title">
+        <h2 id="nome"><strong>Mauricio Meza Burbano</strong></h2>
+        <h3 class="sobre">Programador y Artista 3D </h3>
+        <h3 class="sobre">Software | Videojuegos | XR</h3>
+    </span>
+
     <div id="track">
+
+        <div id="loading">
+            <img id="loading-img"src="models/robotbw.png">
+            <div id="loading-spin" class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>       
+        </div>
 
         <button id="b1" class="boton" data-bs-toggle="modal" data-bs-target="#softModal">
             <h2 class="m">SOFTWARE</h2>
@@ -27,23 +40,11 @@
         <button id="b4" class="boton" data-bs-toggle="modal" data-bs-target="#infoModal">
             <h2 class="n">INFORMACIÓN</h2>
         </button>
-
-        <div id="loading">
-            <img id="loading-img"src="models/robotbw.png">
-            <div id="loading-spin" class="spinner-border" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>       
-        </div>
     
         <img src="./models/img/pantallastatic.png" id="pantalla">
         <div id="c3d"></div>
-        <span id="title">
-            <h2 id="nome"><strong>Mauricio Meza Burbano</strong></h2>
-            <h3 class="sobre">Programador y Artista 3D </h3>
-            <h3 class="sobre">Software | Videojuegos | XR</h3>
-        </span>
+        
     </div>
-
 
     <div class="modal fade" id="softModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-xl">
