@@ -16,7 +16,7 @@ const t1 = `</br>
 const t2 =`</br>
             <h3 class="sobre">Videojuegos y Experiencias Interactivas 
             </br>
-            desarrollados con Unity o Javascript para la Web</h3>`
+            desarrollados con Unity y C# o Javascript para la Web</h3>`
 
 const t3 = `</br>
             <h3 class="sobre">Modelado y Animación 3D en Blender
