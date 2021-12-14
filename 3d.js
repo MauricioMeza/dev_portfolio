@@ -24,7 +24,7 @@ const camera = new THREE.PerspectiveCamera(
 
 //---RENDERER--
 const renderer = new THREE.WebGLRenderer({
-   //antialias: true
+   antialias: true
 });
 renderer.setSize(w, h);
 container.appendChild( renderer.domElement );
