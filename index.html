@@ -15,6 +15,19 @@
 
     <div id="track">
 
+        <button id="b1" class="boton" data-bs-toggle="modal" data-bs-target="#softModal">
+            <h2 class="m">SOFTWARE</h2>
+        </button>
+        <button id="b2" class="boton" data-bs-toggle="modal" data-bs-target="#gamesModal">
+            <h2 class="m">JUEGOS</h2>
+        </button>   
+        <button id="b3" class="boton" data-bs-toggle="modal" data-bs-target="#artModal">
+            <h2 class="n">ARTE 3D</h2>
+        </button>
+        <button id="b4" class="boton" data-bs-toggle="modal" data-bs-target="#infoModal">
+            <h2 class="n">INFORMACIÓN</h2>
+        </button>
+
         <div id="loading">
             <img id="loading-img"src="models/robotbw.png">
             <div id="loading-spin" class="spinner-border" role="status">
@@ -30,19 +43,6 @@
             <h3 class="sobre">Software | Videojuegos | XR</h3>
         </span>
     </div>
-
-    <button id="b1" class="boton" data-bs-toggle="modal" data-bs-target="#softModal">
-        <h2 class="m">SOFTWARE</h2>
-    </button>
-    <button id="b2" class="boton" data-bs-toggle="modal" data-bs-target="#gamesModal">
-        <h2 class="m">JUEGOS</h2>
-    </button>   
-    <button id="b3" class="boton" data-bs-toggle="modal" data-bs-target="#artModal">
-        <h2 class="n">ARTE 3D</h2>
-    </button>
-    <button id="b4" class="boton" data-bs-toggle="modal" data-bs-target="#infoModal">
-        <h2 class="n">INFORMACIÓN</h2>
-    </button>
 
 
     <div class="modal fade" id="softModal" tabindex="-1" aria-hidden="true">
@@ -102,7 +102,7 @@
                                             <p class="card-text">Desarrollé la Aplicacion en Android Studio con lenguaje Java y una Base de Datos interna con SQLite.</p>    
                                         </li>
                                         <li>
-                                            <p class="card-text">Colaboré en el analisis de requisitos con un grupo de Ingenieros de Petroleos, estos actuaron como Product Owner durante el Desarrollo que se realizo con Metodologias Agiles.</p>    
+                                            <p class="card-text">Colaboré en el analisis de requisitos con un grupo de Ingenieros de Petroleos, ellos actuaron como Product Owner durante el Desarrollo que se realizo con Metodologias Agiles.</p>    
                                         </li>
                                     </ul>
                                     
@@ -182,7 +182,7 @@
                                                 web del juego típico colombiano de sapo/rana.</p>    
                                         </li>
                                         <li>
-                                            <p class="card-text">Implementé una API Rest como Backend  para un leaderboard online de los mejores puntajes, desarrollado con MongoDB y Node.js en Javascript.</p>    
+                                            <p class="card-text">Implementé una API Rest como Backend  para un online leaderboard de los mejores puntajes, desarrollado con MongoDB y Node.js en Javascript.</p>    
                                         </li>
                                     </ul>
                                     <a href="https://mauriciomeza.github.io/Sapo3D/" target="_blank">
@@ -274,6 +274,38 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+
+                    <div class="card mb-3 shadow">
+                        <div class="row g-0">
+                            <div class="col-lg-4">
+                                <div class="img-prev">
+                                    <img src="./models/img/3d-f1.png" class="img-fluid rounded-start">
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">TROFEOS FORMULA 1 - Modelo 3D, Blender (2021)</h5>
+                                    <p class="card-text">Modelos 3D de los Trofeos de diferentes grandes premios de Formula-1.</p>
+                                    <ul>
+                                        <li>
+                                            <p class="card-text">Modelados con Subsurface Box Modelling.</p>    
+                                        </li>
+                                        <li>
+                                            <p class="card-text">Modelos con Texturas PBR y Watertight para Impresión 3D a la venta en Sketchfab.</p>    
+                                        </li>
+                                    </ul>
+                                    <a href="https://www.artstation.com/artwork/KOOWER" target="_blank">
+                                        <i class="bi bi-easel"></i>
+                                        <span> Renders en Artstation</span>
+                                    </a></br>
+                                    <a href="https://skfb.ly/orIqT" target="_blank">
+                                        <i class="bi bi-box"></i>
+                                        <span> Modelos 3D en Sketchfab</span>
+                                    </a></br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     
                     <div class="card mb-3 shadow">
                         <div class="row g-0">
@@ -284,7 +316,7 @@
                             </div>
                             <div class="col-lg-8">
                                 <div class="card-body">
-                                    <h5 class="card-title">MAPA COLOMBIA - Blender 3D Model (2020)</h5>
+                                    <h5 class="card-title">MAPA COLOMBIA - Modelo 3D, Blender (2020)</h5>
                                     <p class="card-text">Mapa 3D estilizado con la geografía, ciudades y divisiones políticas Colombianas.</p>
                                     <ul>
                                         <li>
@@ -304,6 +336,38 @@
                                     <a href="https://skfb.ly/6XC6K" target="_blank">
                                         <i class="bi bi-box"></i>
                                         <span>Modelo 3D en Sketchfab</span>
+                                    </a></br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mb-3 shadow">
+                        <div class="row g-0">
+                            <div class="col-lg-4">
+                                <div class="img-prev">
+                                    <img src="./models/img/3d-colcov.gif" class="img-fluid rounded-start">
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">EVOLUCIÓN DEL COVID 19 EN COLOMBIA -  Animación 3D, Blender (2021)</h5>
+                                    <p class="card-text">Visualización de Datos 3D sobre la Evolucion del Covid 19 en Colombia por Municipio.</p>
+                                    <ul>
+                                        <li>
+                                            <p class="card-text">Realicé una limpieza y analisis de datos abiertos gubernamentales con Python.</p>    
+                                        </li>
+                                        <li>
+                                            <p class="card-text">Desarrollé Scripts en Python con la API de Blender para visualizar el numero de contagios por municipio y presentarlos sobre un mapa generado a partir de datos GIS del DANE.</p>    
+                                        </li>
+                                    </ul>
+                                    <a href="https://www.youtube.com/watch?v=Kbsiaa9vYX0&ab_channel=mauro_meza" target="_blank">
+                                        <i class="bi bi-easel"></i>
+                                        <span> Ver la Animacion de Youtube</span>
+                                    </a></br>
+                                    <a href="https://github.com/MauricioMeza/covid19-colombia" target="_blank">
+                                        <i class="bi bi-github"></i>
+                                        <span> Repositorio del Codigo</span>
                                     </a></br>
                                 </div>
                             </div>
@@ -340,38 +404,6 @@
                                     <a href="https://mauriciomeza.github.io/Lajas3D/" target="_blank">
                                         <i class="bi bi-controller"></i>
                                         <span> Experiencia Interactiva</span>
-                                    </a></br>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card mb-3 shadow">
-                        <div class="row g-0">
-                            <div class="col-lg-4">
-                                <div class="img-prev">
-                                    <img src="./models/img/3d-f1.png" class="img-fluid rounded-start">
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title">TROFEOS FORMULA 1 - Blender 3D Model (2021)</h5>
-                                    <p class="card-text">Modelos 3D de los Trofeos de diferentes grandes premios de Formula-1.</p>
-                                    <ul>
-                                        <li>
-                                            <p class="card-text">Modelados con Subsurface Box Modelling.</p>    
-                                        </li>
-                                        <li>
-                                            <p class="card-text">Modelos con Texturas PBR y Watertight para Impresión 3D a la venta en Sketchfab.</p>    
-                                        </li>
-                                    </ul>
-                                    <a href="https://www.artstation.com/artwork/KOOWER" target="_blank">
-                                        <i class="bi bi-easel"></i>
-                                        <span> Renders en Artstation</span>
-                                    </a></br>
-                                    <a href="https://skfb.ly/orIqT" target="_blank">
-                                        <i class="bi bi-box"></i>
-                                        <span> Modelos 3D en Sketchfab</span>
                                     </a></br>
                                 </div>
                             </div>

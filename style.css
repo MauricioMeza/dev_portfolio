@@ -93,15 +93,16 @@ canvas{
 .boton{
 	width: 22%;
 	padding: 2vh 0 2vh 0;
-	background-color: #dc4a3ac5;
+	background-color: #ca7c75;
 	color: #f0fdff;
 	border-width: 2px;
 	border-color: #f0fdff;
 	border-radius: 20px;
 	border-style:solid;
 	transition: 0.3s;
+	position: fixed;
+	z-index: 5;
 	box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4) ;
-
 }
 /*---responsiveness texto--*/
 @media (max-width: 768px) {
@@ -144,22 +145,19 @@ canvas{
   
 /*---posicion de los botones -*/
 #b1{
-	position: fixed;
 	top: 15vh;
 	left: 10vw;
 }
 #b2{
-	position: fixed;
+	
 	top: 15vh;
 	right: 10vw;
 }
 #b3{
-	position: fixed;
 	top: 50vh;
 	left: 5vw;
 }
 #b4{
-	position: fixed;
 	top: 50vh;
 	right: 5vw;
 }
@@ -228,23 +226,4 @@ canvas{
 	align-self: center;
 	margin: 2px;
 }
-/*
-.img-prev {
-	position: relative;
-    text-align: center;
-}
-.img-prev::after {
-	box-shadow: inset  -5px 0px 10px -5px rgba(0, 0, 0, 1);
-	z-index: 10;
-	bottom: 0;
-    content: "";
-    display: block;
-    left: 0;
-    height: 100%;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 100%;
-}
-*/
 
