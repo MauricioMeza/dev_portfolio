@@ -75,11 +75,12 @@ canvas{
 	.sobre{
 		font-size: 5vw;
 	}
-  }
+}
+
 
 /*------BOTONES DE SELECCION------*/
 
-/*---tamaño de letra---*/
+/*---tamaño de letra botones---*/
 .n{
 	font-size: 2.1vw;
 }
@@ -87,7 +88,7 @@ canvas{
 	font-size: 3vw;
 }
 
-/*---estilo---*/
+/*---estilo botones---*/
 .boton{
 	width: 22%;
 	padding: 2vh 0 2vh 0;
@@ -101,6 +102,7 @@ canvas{
 	box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4) ;
 
 }
+/*---responsiveness texto--*/
 @media (max-width: 768px) {
 	.boton{
 		width: 32%;
@@ -126,7 +128,7 @@ canvas{
 	}
 }
 
-/*--no hover mobil --*/
+/*--no hover movil --*/
 @media (min-width: 769px) {
 	.boton:hover{
 		width: 23%;
@@ -139,7 +141,7 @@ canvas{
 	}
 }
   
-/*---posicion-*/
+/*---posicion de los botones -*/
 #b1{
 	position: fixed;
 	top: 15vh;
@@ -160,6 +162,7 @@ canvas{
 	top: 50vh;
 	right: 5vw;
 }
+/*---responsiveness landscape ---*/
 @media (max-width: 768px) {
 	#b1{
 		top: 5vh;
@@ -177,9 +180,9 @@ canvas{
 		top: 25vh;
 		right: 5vw;
 	}
-  }
-  
-  @media (max-width: 425px) {
+}
+/*---responsiveness vertical ---*/  
+@media (max-width: 425px) {
 	#b1{
 		top: 5vh;
 		left: 10vw;
@@ -196,7 +199,7 @@ canvas{
 		top: 20vh;
 		right: 5vw;
 	}
-  }
+}
 
 /*---pantalla---*/
 #pantalla{
@@ -214,3 +217,23 @@ canvas{
 .modal-content{
 	background-color: #eee !important;
 }
+/*
+.img-prev {
+	position: relative;
+    text-align: center;
+}
+.img-prev::after {
+	box-shadow: inset  -5px 0px 10px -5px rgba(0, 0, 0, 1);
+	z-index: 10;
+	bottom: 0;
+    content: "";
+    display: block;
+    left: 0;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+}
+*/
+
