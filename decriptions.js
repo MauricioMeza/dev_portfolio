@@ -32,7 +32,7 @@ const t4 = `</br>
 
 const defaultText =`<h2 id="nome"><strong>Mauricio Meza Burbano</strong></h2>
                     <h3 class="sobre">Programador y Artista 3D </h3>
-                    <h3 class="sobre">Software | Juegos | XR</h3>`
+                    <h3 class="sobre">Software | Videojuegos | XR</h3>`
 
 //Funcion para cambiar el texto
 function changeText(e, text, percentage, img){
