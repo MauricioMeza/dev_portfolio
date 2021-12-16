@@ -140,7 +140,14 @@ function loadModels(){
          .load("./models/contactCube.glb",
          function ( gltf ) {
             //set initial common parameters
-            const size = .6
+            var restScale = 0;
+            var restPos = restScale
+            if(mobile){
+               restScale = 0.05
+               restPos = restScale*((h-600)/80)
+
+            }
+            const size = 0.6 - restScale;
             cube = gltf.scene.children[0];
             var cubeMat = new THREE.MeshStandardMaterial({
                color: "#FFFFFF",
@@ -152,13 +159,12 @@ function loadModels(){
             cube.scale.set(size, size, size);
             const z =  1;
             const y = -4;
-
             //attributes for each cube
             cubeLi = cube.clone();
             cubeLi.name = "cubeLi"
             cubeLi.material = cubeMat.clone()
             cubeLi.material.map = liImgC;
-            cubeLi.position.set(-2 - ((w-300)/800), y , z)
+            cubeLi.position.set(-2 - ((w-300)/800) + (restPos*3), y , z)
             cubeLi.userData = {
                URL:"https://www.linkedin.com/in/mauromezab/",
                HTML: `</br></br><h3 class="sobre">Conecta conmigo en LinkedIn.</h3>`,
@@ -169,7 +175,7 @@ function loadModels(){
             cubeGh.name = "cubeGh"
             cubeGh.material = cubeMat.clone()
             cubeGh.material.map = ghImgC;
-            cubeGh.position.set(-.65 - ((w-300)/2000), y , z)
+            cubeGh.position.set(-.65 - ((w-300)/2000) + (restPos), y , z)
             cubeGh.userData = {
                URL:"https://github.com/MauricioMeza",
                HTML: `</br></br><h3 class="sobre">Revisa mis repositiorios en Github.</h3>`,
@@ -180,7 +186,7 @@ function loadModels(){
             cubeAs.name = "cubeAs"
             cubeAs.material = cubeMat.clone()
             cubeAs.material.map = asImgC;
-            cubeAs.position.set(.65 + ((w-300)/2000), y , z)
+            cubeAs.position.set(.65 + ((w-300)/2000) - (restPos), y , z)
             cubeAs.userData = {
                URL:"https://www.artstation.com/mmezab",
                HTML: `</br></br><h3 class="sobre">Mi mejor Arte 3D en Artstation.</h3>`,
@@ -191,7 +197,7 @@ function loadModels(){
             cubeIg.name = "cubeIg"
             cubeIg.material = cubeMat.clone()
             cubeIg.material.map = igImgC;
-            cubeIg.position.set(2 + ((w-300)/800), y , z)
+            cubeIg.position.set(2 + ((w-300)/800) - (restPos*3), y , z)
             cubeIg.userData = {
                URL:"https://www.instagram.com/mauro_meza_3d/",
                HTML: `</br></br><h3 class="sobre">Trabajos varios de Desarrollo y 3D en Instagram.</h3>`,
