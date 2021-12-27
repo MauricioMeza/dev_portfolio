@@ -1,7 +1,7 @@
-import * as THREE from "https://cdn.skypack.dev/three/build/three.module.js";
-import { GLTFLoader } from 'https://cdn.skypack.dev/three/examples/jsm/loaders/GLTFLoader.js';
+import * as THREE from "./three/build/three.module.js";
+import { GLTFLoader } from "./three/examples/jsm/loaders/GLTFLoader.js";
 //import { OrbitControls } from 'https://cdn.skypack.dev/three/examples/jsm/controls/OrbitControls.js';
-import { EXRLoader } from "https://cdn.skypack.dev/three/examples/jsm/loaders/EXRLoader.js";
+import { EXRLoader } from "./three/examples/jsm/loaders/EXRLoader.js";
 
 var container = document.getElementById("c3d")
 var track = document.getElementById("track")
@@ -88,7 +88,7 @@ function loadHDRI(){
       const pmremGenerator = new THREE.PMREMGenerator( renderer );
       pmremGenerator.compileEquirectangularShader();
       new EXRLoader()
-            .setDataType( THREE.UnsignedByteType )
+            .setDataType( THREE.HalfFloatType )
             .load( "./models/studio.exr", function ( texture ) {
 
                var exrCubeRenderTarget = pmremGenerator.fromEquirectangular( texture );
