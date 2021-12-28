@@ -312,10 +312,10 @@ function highlightAction(obj, img, inverted, link){
    }
     
    if(rotateleft && !mobile){
-      obj.rotation.z += 0.05;
+      obj.rotation.z += 0.025;
    }
    if(rotateright && !mobile){
-      obj.rotation.z -= 0.05;
+      obj.rotation.z -= 0.025;
    }
 }
 
