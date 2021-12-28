@@ -45,11 +45,17 @@ scene.add(light)
 
 /*--------ASYNCRONOUS EXTERNAL LOADING --------*/
 
+const manager = new THREE.LoadingManager();
+manager.onLoad = function ( ) {
+   loaded();
+};
+
+
 async function externalLoads(){
    await loadHDRI();  
    await loadTextures();  
    await loadModels();
-   await loaded();
+   //await loaded();
 }
 
 //----LOAD TEXTURES----
@@ -206,7 +212,6 @@ function loadModels(){
                HTML: `</br></br><h3 class="sobre">Trabajos varios de Desarrollo y 3D en Instagram.</h3>`,
             }
             scene.add(cubeIg)
-            resolve('ok');
          });
          
          //grid plane
