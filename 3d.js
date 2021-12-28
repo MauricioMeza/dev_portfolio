@@ -44,18 +44,19 @@ scene.add(light)
 
 
 /*--------ASYNCRONOUS EXTERNAL LOADING --------*/
-
 const manager = new THREE.LoadingManager();
+manager.onStart = function(item, loaded, total) {
+   console.log('Loading started');
+};
 manager.onLoad = function ( ) {
+   console.log('Loading done');
    loaded();
 };
-
 
 async function externalLoads(){
    await loadHDRI();  
    await loadTextures();  
    await loadModels();
-   //await loaded();
 }
 
 //----LOAD TEXTURES----
@@ -63,25 +64,25 @@ var liImgC, liImg, ghImgC, ghImg, asImgC, asImg, igImgC, igImg, metalRoughness,
    robotC, robotR;
 function loadTextures(){
    return new Promise(resolve => {
-      const textureLoader = new THREE.TextureLoader();
-      robotC = textureLoader.load("./models/robot2.png");
+      const textureLoader = new THREE.TextureLoader(manager);
+      robotC = textureLoader.load("./models/robot2.jpg");
       robotC.flipY = false;
-      robotR = textureLoader.load("./models/robot3.png");
+      robotR = textureLoader.load("./models/robot3.jpg");
       robotR.flipY = false;
       liImgC = textureLoader.load("./models/linkedinc.jpg");
       liImgC.flipY = false;
-      liImg = textureLoader.load("./models/linkedin.jpg");
-      liImg.flipY = false;
       ghImgC = textureLoader.load("./models/githubc.jpg");
       ghImgC.flipY = false;
-      ghImg = textureLoader.load("./models/github.jpg");
-      ghImg.flipY = false;
       asImgC = textureLoader.load("./models/artstationc.jpg");
       asImgC.flipY = false;
-      asImg = textureLoader.load("./models/artstation.jpg");
-      asImg.flipY = false;
       igImgC = textureLoader.load("./models/intagramc.jpg");
       igImgC.flipY = false;
+      liImg = textureLoader.load("./models/linkedin.jpg");
+      liImg.flipY = false;
+      ghImg = textureLoader.load("./models/github.jpg");
+      ghImg.flipY = false;
+      asImg = textureLoader.load("./models/artstation.jpg");
+      asImg.flipY = false;
       igImg = textureLoader.load("./models/instagram.jpg");
       igImg.flipY = false;
       metalRoughness = textureLoader.load("./models/roughnessMetal.jpg");
@@ -96,10 +97,9 @@ function loadHDRI(){
    return new Promise(resolve => {
       const pmremGenerator = new THREE.PMREMGenerator( renderer );
       pmremGenerator.compileEquirectangularShader();
-      new EXRLoader()
+      new EXRLoader(manager)
             .setDataType( THREE.HalfFloatType )
             .load( "./models/studio.exr", function ( texture ) {
-
                var exrCubeRenderTarget = pmremGenerator.fromEquirectangular( texture );
                var exrBackground = exrCubeRenderTarget.texture;
                exrBackground.flipY = false;
@@ -121,7 +121,7 @@ var planeLoaded = false;
 function loadModels(){
    return new Promise(resolve => {
       //robot
-      new GLTFLoader()
+      new GLTFLoader(manager)
       .load("./models/robot-notext.glb",
       function ( gltf ) {
          var scale = 1;
@@ -145,7 +145,7 @@ function loadModels(){
       });
 
       //contactCubes
-      new GLTFLoader()
+      new GLTFLoader(manager)
          .load("./models/contactCube.glb",
          function ( gltf ) {
             //set initial common parameters
@@ -215,7 +215,7 @@ function loadModels(){
          });
          
          //grid plane
-         new GLTFLoader()
+         new GLTFLoader(manager)
             .load("./models/plane.glb",
             function ( gltf ) {
                plane = gltf.scene.children[0]
@@ -225,7 +225,7 @@ function loadModels(){
             });
          
          //background
-         new GLTFLoader()
+         new GLTFLoader(manager)
             .load("./models/scene.glb",
             function ( gltf ) {
                scene.add(gltf.scene)
@@ -240,8 +240,7 @@ function loaded(){
    return new Promise(resolve => {
       setTimeout(() => {
          load.style.visibility = "hidden";
-         load.style.opacity = 0;
-                
+         load.style.opacity = 0;           
       }, 200);
       resolve('ok')     
    });
