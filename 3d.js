@@ -63,7 +63,7 @@ manager.onProgress = function(url, itemsLoaded, itemsTotal ) {
 
 async function externalLoads(){
    await loadHDRI();  
-   await loadTextures();  
+   loadTextures();  
    await loadModels();
    loadTextures2();
 }
@@ -74,7 +74,7 @@ var liImgC, liImg, ghImgC, ghImg, asImgC, asImg, igImgC, igImg, metalRoughness,
 function loadTextures(){
    return new Promise(resolve => {
       //textures needed inmediately
-      const textureLoader = new THREE.TextureLoader(manager);
+      const textureLoader = new THREE.TextureLoader();
       robotC = textureLoader.load("./models/robot2.jpg");
       robotC.flipY = false;
       robotR = textureLoader.load("./models/robot3.jpg");
