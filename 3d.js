@@ -11,6 +11,7 @@ var track = document.getElementById("track")
 var w = window.innerWidth;
 var h = window.innerHeight;
 var load = document.getElementById("loading")
+var loadCount = document.getElementById("loading-num")
 
 
 /*--------INITIAL BOILERPLATE--------*/
@@ -53,6 +54,9 @@ manager.onLoad = function ( ) {
    loaded();
 };
 manager.onProgress = function(url, itemsLoaded, itemsTotal ) {
+   var percent = 100/itemsTotal;
+   percent = percent * itemsLoaded;
+   loadCount.innerHTML = `<p> ${percent}%</p>`
 	console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
 };
 
@@ -113,7 +117,6 @@ function loadHDRI(){
                var exrCubeRenderTarget = pmremGenerator.fromEquirectangular( texture );
                var exrBackground = exrCubeRenderTarget.texture;
                exrBackground.flipY = false;
-               exrBackground.rotation = 3.14;
                background = exrBackground
                texture.dispose();
                resolve('ok');

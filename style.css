@@ -25,6 +25,10 @@
 	top: calc(30vh + (var(--icon-height)/6));
 	left: calc(50vw - (var(--icon-height)/2));
 }
+#loading-num{
+	text-align: center;
+	margin-top: 55vh;
+}
 
 /*------BASE DEL MENU------*/
 html{
