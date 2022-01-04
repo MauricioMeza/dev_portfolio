@@ -55,7 +55,7 @@ manager.onLoad = function ( ) {
 };
 manager.onProgress = function(url, itemsLoaded, itemsTotal ) {
    var percent = 100/itemsTotal;
-   percent = percent * itemsLoaded;
+   percent = parseInt(percent * itemsLoaded);
    loadCount.innerHTML = `<p> ${percent}%</p>`
 	console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
 };
@@ -77,8 +77,6 @@ function loadTextures(){
       const textureLoader = new THREE.TextureLoader();
       robotC = textureLoader.load("./models/robot2.jpg");
       robotC.flipY = false;
-      robotR = textureLoader.load("./models/robot3.jpg");
-      robotR.flipY = false;
       liImgC = textureLoader.load("./models/linkedinc.jpg");
       liImgC.flipY = false;
       ghImgC = textureLoader.load("./models/githubc.jpg");
@@ -87,13 +85,15 @@ function loadTextures(){
       asImgC.flipY = false;
       igImgC = textureLoader.load("./models/intagramc.jpg");
       igImgC.flipY = false;
-      metalRoughness = textureLoader.load("./models/roughnessMetal.jpg");
       resolve('ok');
     });
 }
 function loadTextures2(){
    //textures that can wait
    const textureLoader2 = new THREE.TextureLoader();
+   metalRoughness = textureLoader.load("./models/roughnessMetal.jpg");
+   robotR = textureLoader.load("./models/robot3.jpg");
+      robotR.flipY = false;
    liImg = textureLoader2.load("./models/linkedin.jpg");
    liImg.flipY = false;
    ghImg = textureLoader2.load("./models/github.jpg");
