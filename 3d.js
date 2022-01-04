@@ -62,8 +62,8 @@ manager.onProgress = function(url, itemsLoaded, itemsTotal ) {
 
 
 async function externalLoads(){
-   await loadHDRI();  
-   await loadTextures();  
+   loadHDRI();  
+   loadTextures();  
    loadModels();
    loadTextures2();
 }
@@ -237,14 +237,14 @@ function loadModels(){
                scene.add(plane)
                planeLoaded = true;
             });
-         /*
+         
          //background
          new GLTFLoader(manager)
             .load("./models/scene.glb",
             function ( gltf ) {
                scene.add(gltf.scene)
          });
-         */
+         
    });
    
 }
