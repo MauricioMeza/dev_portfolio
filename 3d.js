@@ -85,9 +85,9 @@ function loadTextures(){
       igImgC.flipY = false;
       robotC = textureLoader.load("./models/robot2.jpg");
       robotC.flipY = false;
-      robotR = textureLoader2.load("./models/robot3.jpg");
+      robotR = textureLoader.load("./models/robot3.jpg");
       robotR.flipY = false;
-      metalRoughness = textureLoader2.load("./models/roughnessMetal.jpg");
+      metalRoughness = textureLoader.load("./models/roughnessMetal.jpg");
       resolve('ok');
     });
 }
