@@ -52,11 +52,16 @@ manager.onLoad = function ( ) {
    console.log('Loading done');
    loaded();
 };
+manager.onProgress = function(url, itemsLoaded, itemsTotal ) {
+	console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
+};
+
 
 async function externalLoads(){
    await loadHDRI();  
    await loadTextures();  
    await loadModels();
+   loadTextures2();
 }
 
 //----LOAD TEXTURES----
@@ -64,6 +69,7 @@ var liImgC, liImg, ghImgC, ghImg, asImgC, asImg, igImgC, igImg, metalRoughness,
    robotC, robotR;
 function loadTextures(){
    return new Promise(resolve => {
+      //textures needed inmediately
       const textureLoader = new THREE.TextureLoader(manager);
       robotC = textureLoader.load("./models/robot2.jpg");
       robotC.flipY = false;
@@ -77,17 +83,21 @@ function loadTextures(){
       asImgC.flipY = false;
       igImgC = textureLoader.load("./models/intagramc.jpg");
       igImgC.flipY = false;
-      liImg = textureLoader.load("./models/linkedin.jpg");
-      liImg.flipY = false;
-      ghImg = textureLoader.load("./models/github.jpg");
-      ghImg.flipY = false;
-      asImg = textureLoader.load("./models/artstation.jpg");
-      asImg.flipY = false;
-      igImg = textureLoader.load("./models/instagram.jpg");
-      igImg.flipY = false;
       metalRoughness = textureLoader.load("./models/roughnessMetal.jpg");
       resolve('ok');
     });
+}
+function loadTextures2(){
+   //textures that can wait
+   const textureLoader2 = new THREE.TextureLoader();
+   liImg = textureLoader2.load("./models/linkedin.jpg");
+   liImg.flipY = false;
+   ghImg = textureLoader2.load("./models/github.jpg");
+   ghImg.flipY = false;
+   asImg = textureLoader2.load("./models/artstation.jpg");
+   asImg.flipY = false;
+   igImg = textureLoader2.load("./models/instagram.jpg");
+   igImg.flipY = false;
 }
 
 
