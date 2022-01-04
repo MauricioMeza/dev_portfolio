@@ -225,6 +225,7 @@ function loadModels(){
                HTML: `</br></br><h3 class="sobre">Trabajos varios de Desarrollo y 3D en Instagram.</h3>`,
             }
             scene.add(cubeIg)
+            resolve('ok');
          });
          
          //grid plane
