@@ -74,7 +74,7 @@ var liImgC, liImg, ghImgC, ghImg, asImgC, asImg, igImgC, igImg, metalRoughness,
 function loadTextures(){
    return new Promise(resolve => {
       //textures needed inmediately
-      const textureLoader = new THREE.TextureLoader();
+      const textureLoader = new THREE.TextureLoader(manager);
       liImgC = textureLoader.load("./models/linkedinc.jpg");
       liImgC.flipY = false;
       ghImgC = textureLoader.load("./models/githubc.jpg");
