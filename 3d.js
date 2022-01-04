@@ -62,9 +62,9 @@ manager.onProgress = function(url, itemsLoaded, itemsTotal ) {
 
 
 async function externalLoads(){
-   loadHDRI();  
-   loadTextures();  
-   loadModels();
+   await loadHDRI();  
+   await loadTextures();  
+   await loadModels();
    loadTextures2();
 }
 
