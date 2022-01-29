@@ -1,6 +1,6 @@
-import * as THREE from "/three/build/three.module.js";
-import { GLTFLoader } from "/three/examples/jsm/loaders/GLTFLoader.js";
-import { EXRLoader } from "/three/examples/jsm/loaders/EXRLoader.js";
+import * as THREE from "dev_portfolio/three/build/three.module.js";
+import { GLTFLoader } from "dev_portfolio/three/examples/jsm/loaders/GLTFLoader.js";
+import { EXRLoader } from "dev_portfolio/three/examples/jsm/loaders/EXRLoader.js";
 /*
 import { OrbitControls } from 'https://cdn.skypack.dev/three/examples/jsm/controls/OrbitControls.js';
 import * as THREE from "https://cdn.skypack.dev/three/build/three.module.js";
