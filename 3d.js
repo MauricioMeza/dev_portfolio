@@ -1,6 +1,12 @@
+
 import * as THREE from "/dev_portfolio/three/build/three.module.js";
 import { GLTFLoader } from "/dev_portfolio/three/examples/jsm/loaders/GLTFLoader.js";
 import { EXRLoader } from "/dev_portfolio/three/examples/jsm/loaders/EXRLoader.js";
+/*
+import * as THREE from "./three/build/three.module.js";
+import { GLTFLoader } from "./three/examples/jsm/loaders/GLTFLoader.js";
+import { EXRLoader } from "./three/examples/jsm/loaders/EXRLoader.js";
+*/
 /*
 import { OrbitControls } from 'https://cdn.skypack.dev/three/examples/jsm/controls/OrbitControls.js';
 import * as THREE from "https://cdn.skypack.dev/three/build/three.module.js";
@@ -20,6 +26,7 @@ var loadCount = document.getElementById("loading-num")
 
 //---CAMERA---
 const scene = new THREE.Scene();
+const clock = new THREE.Clock();
 const camera = new THREE.PerspectiveCamera(
 	30, //Field of View
 	(w)/ (h), //Aspect Ratio
@@ -328,10 +335,10 @@ function highlightAction(obj, img, inverted, link){
    }
     
    if(rotateleft && !mobile){
-      obj.rotation.z += 0.025;
+      obj.rotation.z += 65 * clock.getDelta();
    }
    if(rotateright && !mobile){
-      obj.rotation.z -= 0.025;
+      obj.rotation.z -= 65 * clock.getDelta();  
    }
 }
 
@@ -367,7 +374,7 @@ function animate(){
    //animate plane grid
    if(planeLoaded){
       if(plane.position.z >= -17){
-         plane.position.z -= 0.05  
+         plane.position.z -= 2.5 * clock.getDelta();  
       }else{
          plane.position.z = 0
       }  
