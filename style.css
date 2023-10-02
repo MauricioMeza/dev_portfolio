@@ -82,7 +82,7 @@ canvas{
 }
 .sobre{
 	font-size: 4vh;
-	margin: 0;
+	margin: 0 0 5px 0;
 }
 @media (max-width: 576px) {
 	#nome{
