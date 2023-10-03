@@ -9,7 +9,7 @@ var mobile = screen.orientation.type == 'portrait-primary' || screen.orientation
 
 
 const t1 = `</br>
-            <h3 class="sobre">Proyectos interactivos de Desarrollo Web
+            <h3 class="sobre">Proyectos interactivos de Desarrollo Web y Movíl
             </br>
             principalmente con Javascript, HTML, CSS</h3>`
 
@@ -31,7 +31,7 @@ const t4 = `</br>
             </h3>`
 
 const defaultText =`<h2 id="nome"><strong>Mauricio Meza Burbano</strong></h2>
-                    <h3 class="sobre"><strong>Desarrollador con pasion por el Arte 3D</strong></h3>
+                    <h3 class="sobre"><strong>Desarrollador con pasión por el Arte 3D</strong></h3>
                     <h3 class="sobre">Videojuegos | Software | XR | 3D</h3>`
 
 //Funcion para cambiar el texto
