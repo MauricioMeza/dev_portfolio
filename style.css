@@ -159,38 +159,38 @@ canvas{
 }
   
 /*---posicion de los botones -*/
-#b1{
+#b1, #b1en{
 	top: 15vh;
 	left: 10vw;
 }
-#b2{
+#b2, #b2en{
 	
 	top: 15vh;
 	right: 10vw;
 }
-#b3{
+#b3, #b3en{
 	top: 50vh;
 	left: 5vw;
 }
-#b4{
+#b4, #b4en{
 	top: 50vh;
 	right: 5vw;
 }
 /*---responsiveness landscape ---*/
 @media (max-width: 768px) {
-	#b1{
+	#b1, #b1en{
 		top: 5vh;
 		left: 10vw;
 	}
-	#b2{
+	#b2, #b2en{
 		top: 5vh;
 		right: 10vw;
 	}
-	#b3{
+	#b3, #b3en{
 		top: 25vh;
 		left: 5vw;
 	}
-	#b4{
+	#b4, #b4en{
 		top: 25vh;
 		right: 5vw;
 	}

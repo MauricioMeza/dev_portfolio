@@ -1,12 +1,13 @@
 
-/*
 import * as THREE from "/dev_portfolio/three/build/three.module.js";
 import { GLTFLoader } from "/dev_portfolio/three/examples/jsm/loaders/GLTFLoader.js";
 import { EXRLoader } from "/dev_portfolio/three/examples/jsm/loaders/EXRLoader.js";
-*/
+/*
 import * as THREE from "./three/build/three.module.js";
 import { GLTFLoader } from "./three/examples/jsm/loaders/GLTFLoader.js";
 import { EXRLoader } from "./three/examples/jsm/loaders/EXRLoader.js";
+*/
+
 
 /*
 import { OrbitControls } from 'https://cdn.skypack.dev/three/examples/jsm/controls/OrbitControls.js';
@@ -200,6 +201,7 @@ function loadModels(){
             cubeLi.userData = {
                URL:"https://www.linkedin.com/in/mauromezab/",
                HTML: `</br></br><h3 class="sobre">Conecta conmigo en LinkedIn.</h3>`,
+               HTMLen: `</br></br><h3 class="sobre">Connect with me in LinkedIn.</h3>`
             }
             scene.add(cubeLi)
             
@@ -211,6 +213,7 @@ function loadModels(){
             cubeGh.userData = {
                URL:"https://github.com/MauricioMeza",
                HTML: `</br></br><h3 class="sobre">Revisa mis repositiorios en Github.</h3>`,
+               HTMLen: `</br></br><h3 class="sobre">Check out my Repositories in Github.</h3>`
             }
             scene.add(cubeGh)
             
@@ -222,6 +225,7 @@ function loadModels(){
             cubeAs.userData = {
                URL:"https://www.artstation.com/mmezab",
                HTML: `</br></br><h3 class="sobre">Mi mejor Arte 3D en Artstation.</h3>`,
+               HTMLen: `</br></br><h3 class="sobre">My best 3D Art in Artstation.</h3>`
             }
             scene.add(cubeAs)
             
@@ -233,6 +237,7 @@ function loadModels(){
             cubeIg.userData = {
                URL:"https://www.instagram.com/mauro_meza_3d/",
                HTML: `</br></br><h3 class="sobre">Trabajos varios de Desarrollo y 3D en Instagram.</h3>`,
+               HTMLen: `</br></br><h3 class="sobre">Various Dev and 3D projects on Instagram.</h3>`,
             }
             scene.add(cubeIg)
             resolve('ok');
@@ -323,7 +328,12 @@ function highlightAction(obj, img, inverted, link){
       highlighted = true;
       document.body.style.cursor = "pointer";
       obj.position.z = 1.5;
-      title.innerHTML = obj.userData.HTML;
+      if(eng){
+         title.innerHTML = obj.userData.HTMLen;
+      }else{
+         title.innerHTML = obj.userData.HTML;
+      }
+      
    }
    
    if(obj.rotation.z >= .15){
