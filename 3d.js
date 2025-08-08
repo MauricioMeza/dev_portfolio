@@ -6,8 +6,8 @@ import { EXRLoader } from "/dev_portfolio/three/examples/jsm/loaders/EXRLoader.j
 import * as THREE from "./three/build/three.module.js";
 import { GLTFLoader } from "./three/examples/jsm/loaders/GLTFLoader.js";
 import { EXRLoader } from "./three/examples/jsm/loaders/EXRLoader.js";
-
 */
+
 
 /*
 import { OrbitControls } from 'https://cdn.skypack.dev/three/examples/jsm/controls/OrbitControls.js';
@@ -292,8 +292,14 @@ track.addEventListener("mousemove", function(e){
 
 //---get mouse clicks---
 track.addEventListener("click", function(e){
-   e.preventDefault()
+   // Allow clicks on language selector or any anchor to behave normally
+   const isLangSwitch = e.target.closest('.lang-switch') !== null;
+   const isAnchor = e.target.closest('a') !== null;
+   if (isLangSwitch || isAnchor) {
+      return;
+   }
    if (highlighted || mobile){
+      e.preventDefault();
       ray.setFromCamera( mouseNormal, camera);
       var intersect = ray.intersectObject(scene);
       if (intersect.length > 0) {
