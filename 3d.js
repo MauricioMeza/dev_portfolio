@@ -6,8 +6,8 @@ import { EXRLoader } from "/dev_portfolio/three/examples/jsm/loaders/EXRLoader.j
 import * as THREE from "./three/build/three.module.js";
 import { GLTFLoader } from "./three/examples/jsm/loaders/GLTFLoader.js";
 import { EXRLoader } from "./three/examples/jsm/loaders/EXRLoader.js";
-*/
 
+*/
 
 /*
 import { OrbitControls } from 'https://cdn.skypack.dev/three/examples/jsm/controls/OrbitControls.js';
